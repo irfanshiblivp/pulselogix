@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>PulseLogix - Smart Solutions</title>
+  <title>PulseLogix - Smart Systems</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
@@ -13,108 +13,144 @@
   <style>
     body {
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to bottom, #fdfbfb, #ebedee);
+      background-color: #f8fafc;
     }
     .gradient-text {
       background: linear-gradient(to right, #4f46e5, #9333ea);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
+    .fade-enter {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    .fade-enter-active {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
   </style>
 </head>
-<body>
+<body class="overflow-x-hidden">
   <div id="root"></div>
 
   <script type="text/babel">
     const { useState, useEffect } = React;
 
-    const Modal = ({ title, content, onClose }) => (
-      <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-        <div className="bg-white p-6 rounded-lg max-w-md text-left shadow-lg">
-          <h2 className="text-xl font-semibold mb-4">{title}</h2>
-          <p className="text-gray-700 whitespace-pre-line">{content}</p>
-          <button onClick={onClose} className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded">Close</button>
-        </div>
-      </div>
-    );
+    const Nav = ({ currentPage, setPage }) => {
+      const navItems = ["Home", "Pricing", "For Sale", "About Us", "Contact"];
+      return (
+        <nav className="sticky top-0 z-50 bg-white shadow-md py-4 px-6 flex justify-between items-center">
+          <h1 className="text-2xl font-bold text-indigo-700">PulseLogix</h1>
+          <ul className="flex gap-6 text-sm font-medium text-gray-700">
+            {navItems.map((item, i) => (
+              <li key={i}>
+                <button onClick={() => setPage(item)} className={`hover:text-indigo-600 ${currentPage === item ? 'text-indigo-600' : ''}`}>
+                  {item}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      );
+    };
 
     const Hero = () => (
-      <section className="text-center py-20 px-6 bg-white">
-        <h1 className="text-4xl md:text-6xl font-bold gradient-text">Welcome to PulseLogix</h1>
-        <p className="mt-4 text-lg text-gray-600 max-w-xl mx-auto">
-          PulseLogix builds intelligent systems to simplify institutional workflows. Discover modern digital solutions to manage attendance, libraries, and more.
+      <section className="text-center py-20 px-6 bg-gradient-to-br from-indigo-100 to-white">
+        <h1 className="text-5xl font-bold gradient-text">Smart Systems by PulseLogix</h1>
+        <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+          We craft intelligent solutions to power education — from attendance to libraries, our tools make management seamless and modern.
         </p>
       </section>
     );
 
-    const Sections = ({ onShow }) => {
-      const items = [
-        {
-          title: "Pricing",
-          onClick: () => onShow("Pricing", 
-`Website pricing:
-• Basic Website: ₹9,999
-• Attendance System: ₹14,999
-• Attendance + Library: ₹19,999
+    const Pricing = () => (
+      <section className="p-8 max-w-3xl mx-auto text-center">
+        <h2 className="text-3xl font-bold mb-6 gradient-text">Website Pricing</h2>
+        <ul className="text-gray-700 space-y-4 text-left">
+          <li><b>Basic Website:</b> ₹9,999</li>
+          <li><b>Attendance System:</b> ₹14,999</li>
+          <li><b>Attendance + Library:</b> ₹19,999</li>
+          <li><b>Add-ons:</b></li>
+          <ul className="pl-6 list-disc">
+            <li>Cloud Sync: ₹2,000</li>
+            <li>Analytics Dashboard: ₹3,000</li>
+            <li>Branding & Support: ₹1,500</li>
+          </ul>
+        </ul>
+      </section>
+    );
 
-Add-ons:
-• Cloud Sync: ₹2,000
-• Admin Analytics Dashboard: ₹3,000
-• Branding & Support: ₹1,500`)
-        },
-        {
-          title: "For Sale",
-          onClick: () => onShow("Attendance System for Sale", 
-`We are offering a complete Smart Attendance Management System built with:
-• Teacher and student dashboards
-• Date and student-wise attendance tracking
-• PDF exports, Airtable sync, and time selection
-• Clean UI/UX and no-crash performance
-• Fully customizable and ready for deployment`)
-        },
-        {
-          title: "About Us",
-          onClick: () => onShow("About Us", 
-`PulseLogix was founded with a mission to simplify digital workflows for educational institutions. 
-We are passionate about creating reliable systems that empower teachers, students, and admins with modern tools.
+    const ForSale = () => (
+      <section className="p-8 max-w-3xl mx-auto">
+        <h2 className="text-3xl font-bold mb-4 gradient-text">Attendance System for Sale</h2>
+        <p className="text-gray-700 leading-relaxed">
+          Our full-featured Attendance Management System includes:
+          <br /><br />
+          - Teacher and Student dashboards<br />
+          - Date-wise and student-wise views<br />
+          - PDF export, time selection<br />
+          - Airtable Cloud Integration<br />
+          - Edit past records<br />
+          - Simple UI with no-crash performance<br /><br />
+          <b>Fully ready for deployment and customization.</b>
+        </p>
+      </section>
+    );
 
-From coding the first prototype to deploying advanced dashboards, every solution is built with performance, simplicity, and user experience in mind.`)
-        }
-      ];
-      return (
-        <section className="py-20 px-6 bg-indigo-50 text-center">
-          <h2 className="text-3xl font-bold mb-12">Explore</h2>
-          <div className="flex flex-col md:flex-row justify-center gap-6">
-            {items.map((item, i) => (
-              <button key={i} onClick={item.onClick} className="bg-white shadow-md hover:shadow-lg transition px-8 py-4 rounded-xl text-indigo-600 font-semibold text-lg">
-                {item.title}
-              </button>
-            ))}
-          </div>
-        </section>
-      );
-    };
+    const AboutUs = () => (
+      <section className="p-8 max-w-3xl mx-auto">
+        <h2 className="text-3xl font-bold mb-4 gradient-text">About Us</h2>
+        <p className="text-gray-700 leading-relaxed">
+          PulseLogix was founded with a goal to revolutionize digital tools in education. We specialize in building fast, beautiful, and intelligent systems that eliminate manual work.
+          <br /><br />
+          From the first prototype to production-ready dashboards, we focus on performance, design, and usability — ensuring schools, colleges, and institutions can operate efficiently.
+        </p>
+      </section>
+    );
+
+    const Contact = () => (
+      <section className="p-8 max-w-xl mx-auto">
+        <h2 className="text-3xl font-bold mb-4 gradient-text">Contact Us</h2>
+        <form className="space-y-4">
+          <input type="email" placeholder="Your Email" className="w-full border border-gray-300 px-4 py-2 rounded focus:outline-indigo-500" />
+          <textarea rows="4" placeholder="Your Message" className="w-full border border-gray-300 px-4 py-2 rounded focus:outline-indigo-500"></textarea>
+          <button className="px-6 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">Send Message</button>
+        </form>
+      </section>
+    );
+
+    const Newsletter = () => (
+      <section className="bg-indigo-50 py-10 px-6 text-center">
+        <h3 className="text-xl font-semibold mb-2">Subscribe to our newsletter</h3>
+        <p className="text-gray-600 mb-4">Stay updated with new features, launches, and offers!</p>
+        <div className="flex justify-center gap-4">
+          <input type="email" placeholder="Enter your email" className="px-4 py-2 border border-gray-300 rounded w-64" />
+          <button className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Subscribe</button>
+        </div>
+      </section>
+    );
 
     const Footer = () => (
-      <footer className="bg-white py-6 text-center text-sm text-gray-500">
-        <p>&copy; 2025 PulseLogix.in. All rights reserved.</p>
-        <div className="flex justify-center space-x-4 mt-2">
-          <i data-lucide="facebook" className="w-5 h-5"></i>
-          <i data-lucide="twitter" className="w-5 h-5"></i>
-          <i data-lucide="linkedin" className="w-5 h-5"></i>
-        </div>
+      <footer className="text-center text-sm text-gray-500 py-6">
+        &copy; 2025 PulseLogix.in. All rights reserved.
       </footer>
     );
 
     const App = () => {
-      const [modal, setModal] = useState(null);
+      const [page, setPage] = useState("Home");
       useEffect(() => { lucide.createIcons(); }, []);
+
       return (
         <>
-          <Hero />
-          <Sections onShow={(title, content) => setModal({ title, content })} />
+          <Nav currentPage={page} setPage={setPage} />
+          {page === "Home" && <><Hero /></>}
+          {page === "Pricing" && <Pricing />}
+          {page === "For Sale" && <ForSale />}
+          {page === "About Us" && <AboutUs />}
+          {page === "Contact" && <Contact />}
+          <Newsletter />
           <Footer />
-          {modal && <Modal title={modal.title} content={modal.content} onClose={() => setModal(null)} />}
         </>
       );
     };
