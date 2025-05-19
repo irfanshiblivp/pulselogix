@@ -4,27 +4,17 @@
   <meta charset="UTF-8" />
   <title>PulseLogix - Smart Solutions</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- React, ReactDOM & Babel -->
   <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
-  <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
-
   <style>
     body {
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(to bottom, #fdfbfb, #ebedee);
     }
-
     .gradient-text {
       background: linear-gradient(to right, #4f46e5, #9333ea);
       -webkit-background-clip: text;
@@ -38,61 +28,67 @@
   <script type="text/babel">
     const { useState, useEffect } = React;
 
+    const Modal = ({ title, content, onClose }) => (
+      <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+        <div className="bg-white p-6 rounded-lg max-w-md text-left shadow-lg">
+          <h2 className="text-xl font-semibold mb-4">{title}</h2>
+          <p className="text-gray-700 whitespace-pre-line">{content}</p>
+          <button onClick={onClose} className="mt-4 px-4 py-2 bg-indigo-600 text-white rounded">Close</button>
+        </div>
+      </div>
+    );
+
     const Hero = () => (
       <section className="text-center py-20 px-6 bg-white">
-        <h1 className="text-4xl md:text-6xl font-bold gradient-text">
-          Welcome to PulseLogix
-        </h1>
+        <h1 className="text-4xl md:text-6xl font-bold gradient-text">Welcome to PulseLogix</h1>
         <p className="mt-4 text-lg text-gray-600 max-w-xl mx-auto">
-          We build smart attendance and library systems that power educational excellence.
+          PulseLogix builds intelligent systems to simplify institutional workflows. Discover modern digital solutions to manage attendance, libraries, and more.
         </p>
-        <button className="mt-6 px-6 py-3 bg-indigo-600 text-white rounded-full text-lg shadow-lg">
-          Get Started
-        </button>
       </section>
     );
 
-    const Stats = () => {
-      const stats = [
-        { label: "Schools", value: "120+" },
-        { label: "Users", value: "50K+" },
-        { label: "Projects", value: "10+" },
-      ];
-      return (
-        <section className="bg-indigo-50 py-16">
-          <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row justify-around text-center gap-6">
-            {stats.map((s, i) => (
-              <div key={i}>
-                <h2 className="text-4xl font-bold text-indigo-700">{s.value}</h2>
-                <p className="text-gray-600">{s.label}</p>
-              </div>
-            ))}
-          </div>
-        </section>
-      );
-    };
+    const Sections = ({ onShow }) => {
+      const items = [
+        {
+          title: "Pricing",
+          onClick: () => onShow("Pricing", 
+`Website pricing:
+• Basic Website: ₹9,999
+• Attendance System: ₹14,999
+• Attendance + Library: ₹19,999
 
-    const Features = () => {
-      const features = [
-        { icon: "calendar", title: "Smart Attendance", desc: "Track and manage attendance effortlessly." },
-        { icon: "book", title: "Library Panel", desc: "Issue, return and manage books digitally." },
-        { icon: "cloud", title: "Cloud Sync", desc: "Secure cloud-based backups for all data." },
+Add-ons:
+• Cloud Sync: ₹2,000
+• Admin Analytics Dashboard: ₹3,000
+• Branding & Support: ₹1,500`)
+        },
+        {
+          title: "For Sale",
+          onClick: () => onShow("Attendance System for Sale", 
+`We are offering a complete Smart Attendance Management System built with:
+• Teacher and student dashboards
+• Date and student-wise attendance tracking
+• PDF exports, Airtable sync, and time selection
+• Clean UI/UX and no-crash performance
+• Fully customizable and ready for deployment`)
+        },
+        {
+          title: "About Us",
+          onClick: () => onShow("About Us", 
+`PulseLogix was founded with a mission to simplify digital workflows for educational institutions. 
+We are passionate about creating reliable systems that empower teachers, students, and admins with modern tools.
+
+From coding the first prototype to deploying advanced dashboards, every solution is built with performance, simplicity, and user experience in mind.`)
+        }
       ];
-      useEffect(() => {
-        lucide.createIcons();
-      }, []);
       return (
-        <section className="py-20 px-6 bg-white text-center">
-          <h2 className="text-3xl font-bold mb-12">Features</h2>
-          <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
-            {features.map((f, i) => (
-              <div key={i} className="p-6 bg-indigo-50 rounded-xl shadow hover:shadow-xl transition">
-                <div className="text-indigo-600 mb-4">
-                  <i data-lucide={f.icon} className="w-10 h-10 mx-auto"></i>
-                </div>
-                <h3 className="text-xl font-semibold mb-2">{f.title}</h3>
-                <p className="text-gray-600">{f.desc}</p>
-              </div>
+        <section className="py-20 px-6 bg-indigo-50 text-center">
+          <h2 className="text-3xl font-bold mb-12">Explore</h2>
+          <div className="flex flex-col md:flex-row justify-center gap-6">
+            {items.map((item, i) => (
+              <button key={i} onClick={item.onClick} className="bg-white shadow-md hover:shadow-lg transition px-8 py-4 rounded-xl text-indigo-600 font-semibold text-lg">
+                {item.title}
+              </button>
             ))}
           </div>
         </section>
@@ -110,14 +106,18 @@
       </footer>
     );
 
-    const App = () => (
-      <>
-        <Hero />
-        <Stats />
-        <Features />
-        <Footer />
-      </>
-    );
+    const App = () => {
+      const [modal, setModal] = useState(null);
+      useEffect(() => { lucide.createIcons(); }, []);
+      return (
+        <>
+          <Hero />
+          <Sections onShow={(title, content) => setModal({ title, content })} />
+          <Footer />
+          {modal && <Modal title={modal.title} content={modal.content} onClose={() => setModal(null)} />}
+        </>
+      );
+    };
 
     ReactDOM.createRoot(document.getElementById('root')).render(<App />);
   </script>
