@@ -2,160 +2,143 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>PulseLogix - Smart Systems</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PulseLogix - Web Development Freelancer</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&display=swap" rel="stylesheet"/>
   <style>
     body {
-      font-family: 'Poppins', sans-serif;
-      background-color: #f8fafc;
+      margin: 0;
+      font-family: 'Outfit', sans-serif;
+      background: #0d1117;
+      color: #f0f0f0;
+      overflow-x: hidden;
     }
-    .gradient-text {
-      background: linear-gradient(to right, #4f46e5, #9333ea);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+    header {
+      padding: 20px;
+      text-align: center;
+      background: #161b22;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.5);
     }
-    .fade-enter {
-      opacity: 0;
-      transform: translateY(20px);
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 10px;
     }
-    .fade-enter-active {
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 0.5s ease, transform 0.5s ease;
+    nav button {
+      background: transparent;
+      border: none;
+      color: #58a6ff;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    nav button:hover {
+      color: #f0f6fc;
+    }
+    section {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+      display: none;
+      animation: fadeIn 0.5s ease forwards;
+    }
+    section.active {
+      display: block;
+    }
+    h1, h2 {
+      color: #58a6ff;
+    }
+    .card {
+      background: #161b22;
+      padding: 20px;
+      border-radius: 10px;
+      margin: 20px 0;
+      box-shadow: 0 0 10px #000;
+    }
+    .price {
+      font-size: 1.5rem;
+      color: #79c0ff;
+    }
+    .icon {
+      font-size: 2rem;
+      color: #3fb950;
+      margin-right: 10px;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    @media screen and (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        gap: 10px;
+      }
     }
   </style>
 </head>
-<body class="overflow-x-hidden">
-  <div id="root"></div>
+<body>
+  <header>
+    <h1><i class="fas fa-code"></i> PulseLogix</h1>
+    <p>Empowering Businesses with Custom Web Development</p>
+    <nav>
+      <button onclick="showSection('about')">About</button>
+      <button onclick="showSection('pricing')">Pricing</button>
+      <button onclick="showSection('sale')">For Sale</button>
+      <button onclick="showSection('me')">About Me</button>
+    </nav>
+  </header>
 
-  <script type="text/babel">
-    const { useState, useEffect } = React;
+  <section id="about" class="active">
+    <h2>About PulseLogix</h2>
+    <p>PulseLogix is a premium freelance web development service delivering fast, responsive, and SEO-friendly websites for individuals and small businesses. Whether you're looking for a dynamic website, an e-commerce store, or a unique digital experience — we craft it for you with precision and creativity.</p>
+  </section>
 
-    const Nav = ({ currentPage, setPage }) => {
-      const navItems = ["Home", "Pricing", "For Sale", "About Us", "Contact"];
-      return (
-        <nav className="sticky top-0 z-50 bg-white shadow-md py-4 px-6 flex justify-between items-center">
-          <h1 className="text-2xl font-bold text-indigo-700">PulseLogix</h1>
-          <ul className="flex gap-6 text-sm font-medium text-gray-700">
-            {navItems.map((item, i) => (
-              <li key={i}>
-                <button onClick={() => setPage(item)} className={`hover:text-indigo-600 ${currentPage === item ? 'text-indigo-600' : ''}`}>
-                  {item}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </nav>
-      );
-    };
+  <section id="pricing">
+    <h2>Pricing</h2>
+    <div class="card">
+      <h3><i class="fas fa-rocket icon"></i> Landing Page</h3>
+      <p class="price">₹4,000 – ₹10,000</p>
+      <p>Perfect for personal branding, portfolios, or single product showcases.</p>
+    </div>
+    <div class="card">
+      <h3><i class="fas fa-globe icon"></i> Dynamic Website</h3>
+      <p class="price">₹10,000 – ₹20,000</p>
+      <p>Multi-page website with CMS integration, animations, and modern design.</p>
+    </div>
+    <div class="card">
+      <h3><i class="fas fa-store icon"></i> E-Commerce Website</h3>
+      <p class="price">₹30,000 – ₹60,000</p>
+      <p>Fully functional store with payment gateway, admin panel, and product management.</p>
+    </div>
+  </section>
 
-    const Hero = () => (
-      <section className="text-center py-20 px-6 bg-gradient-to-br from-indigo-100 to-white">
-        <h1 className="text-5xl font-bold gradient-text">Smart Systems by PulseLogix</h1>
-        <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
-          We craft intelligent solutions to power education — from attendance to libraries, our tools make management seamless and modern.
-        </p>
-      </section>
-    );
+  <section id="sale">
+    <h2>Attendance System For Sale</h2>
+    <div class="card">
+      <p>Our flagship Attendance Management System includes student and teacher dashboards, admin panel, export options, filters, and advanced Airtable integration — all built with React and optimized for performance.</p>
+      <ul>
+        <li>Student-wise and date-wise reports</li>
+        <li>Teacher attendance logs with "Show More"</li>
+        <li>Airtable backend integration</li>
+        <li>CSV exports, admin filters, and smooth UI</li>
+      </ul>
+      <p class="price">Starting at ₹15,000</p>
+    </div>
+  </section>
 
-    const Pricing = () => (
-      <section className="p-8 max-w-3xl mx-auto text-center">
-        <h2 className="text-3xl font-bold mb-6 gradient-text">Website Pricing</h2>
-        <ul className="text-gray-700 space-y-4 text-left">
-          <li><b>Basic Website:</b> ₹9,999</li>
-          <li><b>Attendance System:</b> ₹14,999</li>
-          <li><b>Attendance + Library:</b> ₹19,999</li>
-          <li><b>Add-ons:</b></li>
-          <ul className="pl-6 list-disc">
-            <li>Cloud Sync: ₹2,000</li>
-            <li>Analytics Dashboard: ₹3,000</li>
-            <li>Branding & Support: ₹1,500</li>
-          </ul>
-        </ul>
-      </section>
-    );
+  <section id="me">
+    <h2>About Me</h2>
+    <p>I’m a passionate freelance web developer specializing in front-end development, modern UI/UX, and full-stack integrations using tools like React, Firebase, and Airtable. My mission is to build powerful, beautiful, and functional websites that make an impact.</p>
+    <p>Let’s create something amazing together.</p>
+  </section>
 
-    const ForSale = () => (
-      <section className="p-8 max-w-3xl mx-auto">
-        <h2 className="text-3xl font-bold mb-4 gradient-text">Attendance System for Sale</h2>
-        <p className="text-gray-700 leading-relaxed">
-          Our full-featured Attendance Management System includes:
-          <br /><br />
-          - Teacher and Student dashboards<br />
-          - Date-wise and student-wise views<br />
-          - PDF export, time selection<br />
-          - Airtable Cloud Integration<br />
-          - Edit past records<br />
-          - Simple UI with no-crash performance<br /><br />
-          <b>Fully ready for deployment and customization.</b>
-        </p>
-      </section>
-    );
-
-    const AboutUs = () => (
-      <section className="p-8 max-w-3xl mx-auto">
-        <h2 className="text-3xl font-bold mb-4 gradient-text">About Us</h2>
-        <p className="text-gray-700 leading-relaxed">
-          PulseLogix was founded with a goal to revolutionize digital tools in education. We specialize in building fast, beautiful, and intelligent systems that eliminate manual work.
-          <br /><br />
-          From the first prototype to production-ready dashboards, we focus on performance, design, and usability — ensuring schools, colleges, and institutions can operate efficiently.
-        </p>
-      </section>
-    );
-
-    const Contact = () => (
-      <section className="p-8 max-w-xl mx-auto">
-        <h2 className="text-3xl font-bold mb-4 gradient-text">Contact Us</h2>
-        <form className="space-y-4">
-          <input type="email" placeholder="Your Email" className="w-full border border-gray-300 px-4 py-2 rounded focus:outline-indigo-500" />
-          <textarea rows="4" placeholder="Your Message" className="w-full border border-gray-300 px-4 py-2 rounded focus:outline-indigo-500"></textarea>
-          <button className="px-6 py-2 bg-indigo-600 text-white rounded hover:bg-indigo-700">Send Message</button>
-        </form>
-      </section>
-    );
-
-    const Newsletter = () => (
-      <section className="bg-indigo-50 py-10 px-6 text-center">
-        <h3 className="text-xl font-semibold mb-2">Subscribe to our newsletter</h3>
-        <p className="text-gray-600 mb-4">Stay updated with new features, launches, and offers!</p>
-        <div className="flex justify-center gap-4">
-          <input type="email" placeholder="Enter your email" className="px-4 py-2 border border-gray-300 rounded w-64" />
-          <button className="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">Subscribe</button>
-        </div>
-      </section>
-    );
-
-    const Footer = () => (
-      <footer className="text-center text-sm text-gray-500 py-6">
-        &copy; 2025 PulseLogix.in. All rights reserved.
-      </footer>
-    );
-
-    const App = () => {
-      const [page, setPage] = useState("Home");
-      useEffect(() => { lucide.createIcons(); }, []);
-
-      return (
-        <>
-          <Nav currentPage={page} setPage={setPage} />
-          {page === "Home" && <><Hero /></>}
-          {page === "Pricing" && <Pricing />}
-          {page === "For Sale" && <ForSale />}
-          {page === "About Us" && <AboutUs />}
-          {page === "Contact" && <Contact />}
-          <Newsletter />
-          <Footer />
-        </>
-      );
-    };
-
-    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('section').forEach(s => s.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
   </script>
 </body>
 </html>
