@@ -5,73 +5,158 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PulseLogix</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
 </head>
 <body class="bg-black text-white font-sans">
 
+  <!-- Header -->
+  <header class="flex justify-between items-center px-6 py-4 bg-gray-950 shadow-lg">
+    <h1 class="text-2xl font-bold text-purple-500">PulseLogix</h1>
+    <nav class="space-x-4">
+      <a href="#about" class="hover:text-purple-400">About</a>
+      <a href="#services" class="hover:text-purple-400">Services</a>
+      <a href="#projects" class="hover:text-purple-400">Projects</a>
+      <a href="#why" class="hover:text-purple-400">Why Us</a>
+      <a href="#contact" class="hover:text-purple-400">Contact</a>
+    </nav>
+  </header>
+
   <!-- About Section -->
-  <section class="text-center py-16 px-4 bg-gradient-to-b from-purple-900 via-black to-black">
-    <h1 class="text-4xl font-bold mb-4">About PulseLogix</h1>
+  <section id="about" class="text-center py-16 px-4 bg-gradient-to-b from-purple-900 via-black to-black" data-aos="fade-up">
+    <h2 class="text-4xl font-bold mb-4">About PulseLogix</h2>
     <p class="max-w-2xl mx-auto text-gray-300">
-      Pulseelico a futuristic freelance web design brand with years of experience in UI/UX, SEO, custom interfaces,
+      PulseLogix is a futuristic freelance web design brand with years of experience in UI/UX, SEO, custom interfaces,
       and responsive websites for startups, personal brands, and businesses.
     </p>
   </section>
 
   <!-- Services Section -->
-  <section class="py-16 px-4 text-center">
+  <section id="services" class="py-16 px-4 text-center" data-aos="fade-up">
     <h2 class="text-3xl font-semibold mb-10">Services</h2>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-      <div class="bg-gray-900 p-6 rounded-lg shadow-lg">Custom Web Design</div>
-      <div class="bg-gray-900 p-6 rounded-lg shadow-lg">UI/UX Wireframing</div>
-      <div class="bg-gray-900 p-6 rounded-lg shadow-lg">Responsive Layouts</div>
-      <div class="bg-gray-900 p-6 rounded-lg shadow-lg">Admin Dashboards</div>
-      <div class="bg-gray-900 p-6 rounded-lg shadow-lg">E-commerce & CMS</div>
-      <div class="bg-gray-900 p-6 rounded-lg shadow-lg">Performance Optimization</div>
-      <div class="bg-gray-900 p-6 rounded-lg shadow-lg">SEO Friendly Design</div>
-      <div class="bg-gray-900 p-6 rounded-lg shadow-lg">Firebase API Integration</div>
+      <div class="bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center">
+        <i data-lucide="layout-dashboard" class="mb-2 text-purple-400"></i>
+        Custom Web Design
+      </div>
+      <div class="bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center">
+        <i data-lucide="pen-tool" class="mb-2 text-purple-400"></i>
+        UI/UX Wireframing
+      </div>
+      <div class="bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center">
+        <i data-lucide="smartphone" class="mb-2 text-purple-400"></i>
+        Responsive Layouts
+      </div>
+      <div class="bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center">
+        <i data-lucide="server" class="mb-2 text-purple-400"></i>
+        Admin Dashboards
+      </div>
+      <div class="bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center">
+        <i data-lucide="shopping-cart" class="mb-2 text-purple-400"></i>
+        E-commerce & CMS
+      </div>
+      <div class="bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center">
+        <i data-lucide="zap" class="mb-2 text-purple-400"></i>
+        Performance Optimization
+      </div>
+      <div class="bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center">
+        <i data-lucide="search" class="mb-2 text-purple-400"></i>
+        SEO Friendly Design
+      </div>
+      <div class="bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center">
+        <i data-lucide="cloud" class="mb-2 text-purple-400"></i>
+        Firebase API Integration
+      </div>
     </div>
   </section>
 
   <!-- Live Projects Section -->
-  <section class="py-16 px-4 bg-gradient-to-b from-black via-gray-900 to-black text-center">
+  <section id="projects" class="py-16 px-4 bg-gradient-to-b from-black via-gray-900 to-black text-center" data-aos="fade-up">
     <h2 class="text-3xl font-semibold mb-10">Live Projects</h2>
     <div class="flex flex-col md:flex-row justify-center gap-6 max-w-4xl mx-auto">
       <div class="bg-gray-900 p-6 rounded-lg w-full md:w-1/3">
         <h3 class="text-xl font-bold mb-2">Live Projects</h3>
         <p class="text-gray-400">Raczt, Nextjie Pesigres</p>
-        <button class="mt-4 bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded">View Demo</button>
+        <button onclick="showPage('demo1')" class="mt-4 bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded">View Demo</button>
       </div>
       <div class="bg-gray-900 p-6 rounded-lg w-full md:w-1/3">
         <h3 class="text-xl font-bold mb-2">Basic</h3>
         <p class="text-3xl text-purple-500 font-bold">$99</p>
         <p class="text-gray-400">One Page Portfolio</p>
-        <button class="mt-4 bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded">View Demo</button>
+        <button onclick="showPage('demo2')" class="mt-4 bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded">View Demo</button>
       </div>
       <div class="bg-gray-900 p-6 rounded-lg w-full md:w-1/3">
         <h3 class="text-xl font-bold mb-2">Pro</h3>
         <p class="text-3xl text-purple-500 font-bold">$29</p>
         <p class="text-gray-400">Multi-page Site + CMS</p>
-        <button class="mt-4 bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded">Request Project</button>
+        <button onclick="showPage('request')" class="mt-4 bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded">Request Project</button>
       </div>
     </div>
   </section>
 
   <!-- Why Choose Us Section -->
-  <section class="py-16 px-4 text-center">
+  <section id="why" class="py-16 px-4 text-center" data-aos="fade-up">
     <h2 class="text-3xl font-semibold mb-10">Why Choose PulseLogix</h2>
     <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-      <div class="bg-gray-900 p-6 rounded-lg shadow-lg">100+ Projects Delivered</div>
-      <div class="bg-gray-900 p-6 rounded-lg shadow-lg">5-Star Client Feedback</div>
-      <div class="bg-gray-900 p-6 rounded-lg shadow-lg">Fully Responsive Sites</div>
-      <div class="bg-gray-900 p-6 rounded-lg shadow-lg">Ongoing Support</div>
+      <div class="bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center">
+        <i data-lucide="check-circle" class="mb-2 text-purple-400"></i>
+        100+ Projects Delivered
+      </div>
+      <div class="bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center">
+        <i data-lucide="star" class="mb-2 text-purple-400"></i>
+        5-Star Client Feedback
+      </div>
+      <div class="bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center">
+        <i data-lucide="monitor" class="mb-2 text-purple-400"></i>
+        Fully Responsive Sites
+      </div>
+      <div class="bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center">
+        <i data-lucide="life-buoy" class="mb-2 text-purple-400"></i>
+        Ongoing Support
+      </div>
     </div>
   </section>
 
   <!-- Contact Section -->
-  <section class="py-16 px-4 bg-gray-950 text-center">
+  <section id="contact" class="py-16 px-4 bg-gray-950 text-center" data-aos="fade-up">
     <h2 class="text-3xl font-semibold">Contact</h2>
     <p class="text-gray-400 mt-4">Get in touch with us to start your project today!</p>
   </section>
 
+  <!-- Dynamic Page Sections -->
+  <section id="demo1" class="hidden py-16 px-4 text-center bg-black">
+    <h2 class="text-3xl font-bold mb-4 text-purple-400">Demo Project</h2>
+    <p class="text-gray-300 max-w-xl mx-auto">This is a demo view of our project "Raczt" — a clean, modern interface designed for speed and scalability using Next.js.</p>
+  </section>
+
+  <section id="demo2" class="hidden py-16 px-4 text-center bg-black">
+    <h2 class="text-3xl font-bold mb-4 text-purple-400">Basic Demo</h2>
+    <p class="text-gray-300 max-w-xl mx-auto">Explore our one-page portfolio template, optimized for freelancers and personal brands with blazing fast performance.</p>
+  </section>
+
+  <section id="request" class="hidden py-16 px-4 text-center bg-black">
+    <h2 class="text-3xl font-bold mb-4 text-purple-400">Request Pro Project</h2>
+    <p class="text-gray-300 max-w-xl mx-auto">Ready to launch your full site? Contact us for custom multi-page websites with CMS and admin panels powered by Firebase.</p>
+  </section>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init();
+    lucide.createIcons();
+
+    function showPage(id) {
+      ['demo1', 'demo2', 'request'].forEach(page => {
+        document.getElementById(page).classList.add('hidden');
+      });
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+      document.getElementById(id).classList.remove('hidden');
+    }
+  </script>
 </body>
 </html>
