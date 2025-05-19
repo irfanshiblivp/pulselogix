@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PulseLogix - Smart Solutions</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Framer Motion & React (via CDN) -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://unpkg.com/framer-motion/dist/framer-motion.umd.js"></script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #fdfbfb, #ebedee);
+    }
+
+    .gradient-text {
+      background: linear-gradient(to right, #4f46e5, #9333ea);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <script type="text/javascript">
+    const { useState } = React;
+    const { motion } = window['framer-motion'];
+
+    function Hero() {
+      return (
+        <section className="text-center py-20 px-6 bg-white">
+          <motion.h1
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="text-4xl md:text-6xl font-bold gradient-text"
+          >
+            Welcome to PulseLogix
+          </motion.h1>
+          <p className="mt-4 text-lg text-gray-600 max-w-xl mx-auto">
+            We build smart attendance and library systems that power educational excellence.
+          </p>
+          <motion.button
+            whileHover={{ scale: 1.05 }}
+            className="mt-6 px-6 py-3 bg-indigo-600 text-white rounded-full text-lg shadow-lg"
+          >
+            Get Started
+          </motion.button>
+        </section>
+      );
+    }
+
+    function Stats() {
+      const stats = [
+        { label: "Schools", value: "120+" },
+        { label: "Active Users", value: "50K+" },
+        { label: "Projects", value: "10+" },
+      ];
+
+      return (
+        <section className="bg-indigo-50 py-16">
+          <div className="max-w-6xl mx-auto px-4 flex justify-around text-center">
+            {stats.map((s, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.2 }}
+              >
+                <h2 className="text-4xl font-bold text-indigo-700">{s.value}</h2>
+                <p className="text-gray-600">{s.label}</p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+      );
+    }
+
+    function Features() {
+      const features = [
+        { icon: "calendar", title: "Smart Attendance", desc: "Track and manage attendance effortlessly." },
+        { icon: "book", title: "Library Panel", desc: "Issue, return and manage books digitally." },
+        { icon: "cloud", title: "Cloud Sync", desc: "Secure cloud-based backups for all data." },
+      ];
+
+      return (
+        <section className="py-20 px-6 bg-white text-center">
+          <h2 className="text-3xl font-bold mb-12">Features</h2>
+          <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
+            {features.map((f, i) => (
+              <motion.div
+                key={i}
+                whileHover={{ scale: 1.05 }}
+                className="p-6 bg-indigo-50 rounded-xl shadow hover:shadow-xl transition"
+              >
+                <div className="text-indigo-600 mb-4">
+                  <i data-lucide={f.icon} className="w-10 h-10 mx-auto"></i>
+                </div>
+                <h3 className="text-xl font-semibold mb-2">{f.title}</h3>
+                <p className="text-gray-600">{f.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+      );
+    }
+
+    function Testimonials() {
+      const testimonials = [
+        { name: "Rahul S.", comment: "PulseLogix transformed our attendance tracking system completely." },
+        { name: "Meena K.", comment: "Managing books has never been this easy and efficient!" },
+      ];
+
+      return (
+        <section className="bg-indigo-600 text-white py-20 px-6">
+          <h2 className="text-3xl font-bold mb-10 text-center">What Our Users Say</h2>
+          <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+            {testimonials.map((t, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, x: -30 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                className="bg-white text-black p-6 rounded-lg shadow"
+              >
+                <p className="text-lg italic">"{t.comment}"</p>
+                <p className="mt-4 font-semibold text-right">- {t.name}</p>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+      );
+    }
+
+    function Contact() {
+      const [email, setEmail] = useState("");
+
+      const handleSubmit = (e) => {
+        e.preventDefault();
+        if (email) alert("Thanks! We’ll contact you soon.");
+      };
+
+      return (
+        <section className="py-20 px-6 bg-gray-100 text-center">
+          <h2 className="text-3xl font-bold mb-6">Get in Touch</h2>
+          <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+            <input
+              type="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email"
+              className="w-full px-4 py-2 rounded-l-md border border-gray-300 focus:outline-none"
+            />
+            <button type="submit" className="w-full mt-4 bg-indigo-600 text-white px-4 py-2 rounded-md">Contact Us</button>
+          </form>
+        </section>
+      );
+    }
+
+    function Footer() {
+      return (
+        <footer className="bg-white py-6 text-center text-sm text-gray-500">
+          <p>&copy; 2025 PulseLogix.in. All rights reserved.</p>
+          <div className="flex justify-center space-x-4 mt-2">
+            <i data-lucide="facebook" className="w-5 h-5"></i>
+            <i data-lucide="twitter" className="w-5 h-5"></i>
+            <i data-lucide="linkedin" className="w-5 h-5"></i>
+          </div>
+        </footer>
+      );
+    }
+
+    function App() {
+      React.useEffect(() => {
+        lucide.createIcons();
+      }, []);
+
+      return (
+        <>
+          <Hero />
+          <Stats />
+          <Features />
+          <Testimonials />
+          <Contact />
+          <Footer />
+        </>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>
