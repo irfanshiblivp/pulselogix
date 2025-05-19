@@ -1,71 +1,266 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PulseLogix - NextGen Web Design</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PulseLogix – Freelance Web Design</title>
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- TailwindCSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- React + Babel -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #1E2A38, #3A6EA5);
-            color: white;
-            text-align: center;
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        font-family: 'DM Sans', sans-serif;
+      }
+      .hero-bg {
+        background: linear-gradient(135deg, #1e293b, #0f172a);
+      }
+      .fade-in {
+        animation: fadeIn 1.2s ease-in-out;
+      }
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
         }
-        header {
-            padding: 20px;
-            font-size: 24px;
-            font-weight: 600;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
+        to {
+          opacity: 1;
+          transform: translateY(0);
         }
-        #app {
-            margin: 50px auto;
-        }
-        .btn {
-            padding: 12px 20px;
-            font-size: 18px;
-            font-weight: bold;
-            color: white;
-            background: #E91E63;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .btn:hover {
-            background: #C2185B;
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body class="bg-gray-900 text-white">
+    <div id="root"></div>
 
-    <header>
-        <i class="fa fa-globe"></i> PulseLogix - Web Design Reimagined
-    </header>
-
-    <div id="app"></div>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
-    
     <script type="text/babel">
-        function App() {
-            return (
-                <div>
-                    <h1>Welcome to PulseLogix</h1>
-                    <p>Crafting digital experiences with next-generation design.</p>
-                    <button className="btn">Start Your Journey</button>
+      const Icon = ({ name }) => {
+        React.useEffect(() => {
+          lucide.createIcons();
+        }, []);
+        return <i data-lucide={name}></i>;
+      };
+
+      const Section = ({ id, title, children }) => (
+        <section id={id} className="py-20 px-6 max-w-7xl mx-auto fade-in">
+          {title && <h2 className="text-4xl font-bold mb-8 text-center">{title}</h2>}
+          {children}
+        </section>
+      );
+
+      const Hero = () => (
+        <section className="hero-bg text-center h-screen flex flex-col justify-center items-center px-6 fade-in">
+          <h1 className="text-5xl md:text-6xl font-bold mb-4">PulseLogix</h1>
+          <p className="text-xl md:text-2xl mb-6 italic">Designing Tomorrow’s Web, Today.</p>
+          <a
+            href="#contact"
+            className="bg-purple-600 hover:bg-purple-500 transition px-6 py-3 rounded-full text-white text-lg font-medium"
+          >
+            Let’s Build Your Site
+          </a>
+        </section>
+      );
+
+      const About = () => (
+        <Section id="about" title="About PulseLogix">
+          <p className="text-lg leading-relaxed text-gray-300 max-w-3xl mx-auto text-center">
+            PulseLogix is a creative freelance brand specializing in high-end web design.
+            With over 5 years of experience, we focus on crafting elegant user experiences,
+            stunning visuals, and performant websites using cutting-edge tech like React, Next.js,
+            Tailwind, GSAP, and Framer Motion. Whether you’re a startup or brand, we build digital
+            experiences that convert.
+          </p>
+        </Section>
+      );
+
+      const services = [
+        "Custom Web Design",
+        "UI/UX Wireframing",
+        "Responsive Mobile-First Layouts",
+        "Admin Dashboards",
+        "E-commerce & CMS",
+        "Full React.js Apps",
+        "Performance Optimization",
+        "SEO Friendly Design",
+        "Airtable Integration",
+        "Firebase & API Integration",
+      ];
+
+      const Services = () => (
+        <Section id="services" title="Services">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {services.map((service, i) => (
+              <div
+                key={i}
+                className="bg-gray-800 rounded-xl p-6 hover:bg-purple-600 transition shadow-lg"
+              >
+                <div className="flex items-center space-x-3 mb-3">
+                  <Icon name="check-circle" />
+                  <h3 className="text-xl font-semibold">{service}</h3>
                 </div>
-            );
-        }
+                <p className="text-gray-400 text-sm">
+                  Premium quality {service.toLowerCase()} with a focus on elegance and efficiency.
+                </p>
+              </div>
+            ))}
+          </div>
+        </Section>
+      );
 
-        ReactDOM.render(<App />, document.getElementById('app'));
+      const projects = [
+        {
+          title: "NextWave Agency",
+          description: "Creative agency portfolio with animations.",
+          tech: "Next.js, Tailwind, Framer Motion",
+        },
+        {
+          title: "EcomFlow",
+          description: "Modern ecommerce store with CMS backend.",
+          tech: "React, Shopify API, Airtable",
+        },
+        {
+          title: "DashboardX",
+          description: "Admin dashboard for SaaS analytics.",
+          tech: "React, Chart.js, Firebase",
+        },
+      ];
+
+      const Portfolio = () => (
+        <Section id="portfolio" title="Live Projects">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {projects.map((proj, i) => (
+              <div key={i} className="bg-gray-800 rounded-xl p-6 shadow hover:scale-105 transition">
+                <h3 className="text-2xl font-semibold mb-2">{proj.title}</h3>
+                <p className="text-gray-400 mb-2">{proj.description}</p>
+                <p className="text-sm text-purple-400 mb-4">{proj.tech}</p>
+                <div className="flex space-x-3">
+                  <a href="#" className="text-purple-300 hover:underline">
+                    View Demo
+                  </a>
+                  <a href="#" className="text-purple-300 hover:underline">
+                    GitHub
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Section>
+      );
+
+      const plans = [
+        { name: "Basic", price: "$99", details: "One Page Portfolio" },
+        { name: "Pro", price: "$299", details: "Multi-page + CMS" },
+        { name: "Premium", price: "$599", details: "Full React Web App" },
+      ];
+
+      const Pricing = () => (
+        <Section id="pricing" title="Pricing Plans">
+          <div className="flex flex-col md:flex-row justify-center gap-6">
+            {plans.map((plan, i) => (
+              <div key={i} className="bg-gray-800 rounded-xl p-6 text-center shadow-lg w-full md:w-1/3">
+                <h3 className="text-2xl font-semibold mb-2">{plan.name}</h3>
+                <p className="text-4xl text-purple-500 font-bold mb-4">{plan.price}</p>
+                <p className="text-gray-400 mb-6">{plan.details}</p>
+                <button className="bg-purple-600 hover:bg-purple-500 transition px-4 py-2 rounded text-white">
+                  Request Project
+                </button>
+              </div>
+            ))}
+          </div>
+        </Section>
+      );
+
+      const WhyChoose = () => (
+        <Section id="why" title="Why Choose PulseLogix">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            {[
+              ["100+", "Projects Delivered"],
+              ["5★", "Client Feedback"],
+              ["100%", "Responsive Designs"],
+              ["24/7", "Support & Updates"],
+            ].map(([title, desc], i) => (
+              <div key={i} className="p-4 rounded bg-gray-800 shadow hover:bg-purple-700 transition">
+                <h4 className="text-3xl font-bold text-purple-400">{title}</h4>
+                <p className="text-sm mt-2 text-gray-200">{desc}</p>
+              </div>
+            ))}
+          </div>
+        </Section>
+      );
+
+      const Testimonials = () => (
+        <Section id="testimonials" title="Client Testimonials">
+          <div className="space-y-6 max-w-3xl mx-auto">
+            {[
+              { name: "A. Singh", project: "Startup Landing", quote: "Absolutely phenomenal design and UX!" },
+              { name: "J. Rivera", project: "Ecommerce Site", quote: "Clean code, fast site, and great communication." },
+              { name: "K. Zhao", project: "Admin Dashboard", quote: "Professional, modern and exactly what I needed." },
+            ].map((t, i) => (
+              <div key={i} className="bg-gray-800 p-6 rounded-xl shadow">
+                <p className="text-gray-300 italic mb-2">“{t.quote}”</p>
+                <p className="text-sm text-purple-300">{t.name} – {t.project}</p>
+              </div>
+            ))}
+          </div>
+        </Section>
+      );
+
+      const Contact = () => (
+        <Section id="contact" title="Get In Touch">
+          <form className="max-w-xl mx-auto space-y-4">
+            <input type="text" placeholder="Your Name" className="w-full p-3 rounded bg-gray-800 text-white" />
+            <input type="email" placeholder="Your Email" className="w-full p-3 rounded bg-gray-800 text-white" />
+            <textarea placeholder="Your Message" className="w-full p-3 rounded bg-gray-800 text-white" rows="5" />
+            <button className="bg-purple-600 hover:bg-purple-500 transition px-6 py-3 rounded text-white">
+              Send Message
+            </button>
+          </form>
+          <div className="mt-8 text-center text-gray-400 space-y-2">
+            <p>Email: contact@pulselogix.dev</p>
+            <p className="space-x-4">
+              <a href="#" className="hover:text-purple-300">LinkedIn</a>
+              <a href="#" className="hover:text-purple-300">GitHub</a>
+              <a href="#" className="hover:text-purple-300">Instagram</a>
+            </p>
+          </div>
+        </Section>
+      );
+
+      const Footer = () => (
+        <footer className="bg-gray-800 py-6 text-center text-gray-400">
+          <p className="text-sm">© 2025 PulseLogix. All rights reserved.</p>
+          <p className="text-sm mt-1">Made with love by PulseLogix</p>
+        </footer>
+      );
+
+      const App = () => (
+        <>
+          <Hero />
+          <About />
+          <Services />
+          <Portfolio />
+          <Pricing />
+          <WhyChoose />
+          <Testimonials />
+          <Contact />
+          <Footer />
+        </>
+      );
+
+      ReactDOM.render(<App />, document.getElementById('root'));
     </script>
-
-</body>
+  </body>
 </html>
