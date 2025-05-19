@@ -58,16 +58,22 @@
 <body>
   <div id="root"></div>
 
-  <!-- React & ReactDOM -->
-  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-  <!-- React Router -->
-  <script src="https://unpkg.com/react-router-dom@6/umd/react-router-dom.development.js" crossorigin></script>
-  <!-- Babel for JSX -->
+  <!-- React 17 (for best compatibility) -->
+  <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+  <!-- React Router DOM 5 (compatible with React 17) -->
+  <script src="https://unpkg.com/react-router-dom@5/umd/react-router-dom.min.js" crossorigin></script>
+  <!-- Babel for JSX support -->
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
   <script type="text/babel">
-    const { BrowserRouter, Routes, Route, Link, useLocation } = ReactRouterDOM;
+    const {
+      BrowserRouter,
+      Switch,
+      Route,
+      Link,
+      useLocation
+    } = ReactRouterDOM;
 
     const Header = () => {
       const location = useLocation();
@@ -167,20 +173,19 @@
       <BrowserRouter>
         <Header />
         <main>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/about" element={<AboutUs />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/pricing" element={<Pricing />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/about" component={AboutUs} />
+            <Route path="/services" component={Services} />
+            <Route path="/pricing" component={Pricing} />
+            <Route path="/contact" component={Contact} />
+          </Switch>
         </main>
         <Footer />
       </BrowserRouter>
     );
 
-    const root = ReactDOM.createRoot(document.getElementById('root'));
-    root.render(<App />);
+    ReactDOM.render(<App />, document.getElementById('root'));
   </script>
 </body>
 </html>
