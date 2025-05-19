@@ -8,23 +8,26 @@
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
+    html { scroll-behavior: smooth; }
   </style>
 </head>
 <body class="bg-black text-white font-sans">
 
   <!-- Header -->
-  <header class="flex justify-between items-center px-6 py-4 bg-gray-950 shadow-lg">
-    <h1 class="text-2xl font-bold text-purple-500">PulseLogix</h1>
-    <nav class="space-x-4">
-      <a href="#about" class="hover:text-purple-400">About</a>
-      <a href="#services" class="hover:text-purple-400">Services</a>
-      <a href="#projects" class="hover:text-purple-400">Projects</a>
-      <a href="#why" class="hover:text-purple-400">Why Us</a>
-      <a href="#contact" class="hover:text-purple-400">Contact</a>
-    </nav>
+  <header class="bg-gray-950 shadow-lg">
+    <div class="flex justify-between items-center px-6 py-4">
+      <h1 class="text-2xl font-bold text-purple-500">PulseLogix</h1>
+      <button class="md:hidden" onclick="document.getElementById('menu').classList.toggle('hidden')">
+        <i data-lucide="menu" class="text-white w-6 h-6"></i>
+      </button>
+      <nav class="hidden md:flex space-x-4" id="menu">
+        <a href="#about" class="hover:text-purple-400 block">About</a>
+        <a href="#services" class="hover:text-purple-400 block">Services</a>
+        <a href="#projects" class="hover:text-purple-400 block">Projects</a>
+        <a href="#why" class="hover:text-purple-400 block">Why Us</a>
+        <a href="#contact" class="hover:text-purple-400 block">Contact</a>
+      </nav>
+    </div>
   </header>
 
   <!-- About Section -->
@@ -39,38 +42,18 @@
   <!-- Services Section -->
   <section id="services" class="py-16 px-4 text-center" data-aos="fade-up">
     <h2 class="text-3xl font-semibold mb-10">Services</h2>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-      <div class="bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center">
-        <i data-lucide="layout-dashboard" class="mb-2 text-purple-400"></i>
-        Custom Web Design
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+      <div onclick="showPage('service1')" class="cursor-pointer bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center hover:bg-gray-800">
+        <i data-lucide="layout-dashboard" class="mb-2 text-purple-400"></i> Custom Web Design
       </div>
-      <div class="bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center">
-        <i data-lucide="pen-tool" class="mb-2 text-purple-400"></i>
-        UI/UX Wireframing
+      <div onclick="showPage('service2')" class="cursor-pointer bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center hover:bg-gray-800">
+        <i data-lucide="pen-tool" class="mb-2 text-purple-400"></i> UI/UX Wireframing
       </div>
-      <div class="bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center">
-        <i data-lucide="smartphone" class="mb-2 text-purple-400"></i>
-        Responsive Layouts
+      <div onclick="showPage('service3')" class="cursor-pointer bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center hover:bg-gray-800">
+        <i data-lucide="smartphone" class="mb-2 text-purple-400"></i> Responsive Layouts
       </div>
-      <div class="bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center">
-        <i data-lucide="server" class="mb-2 text-purple-400"></i>
-        Admin Dashboards
-      </div>
-      <div class="bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center">
-        <i data-lucide="shopping-cart" class="mb-2 text-purple-400"></i>
-        E-commerce & CMS
-      </div>
-      <div class="bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center">
-        <i data-lucide="zap" class="mb-2 text-purple-400"></i>
-        Performance Optimization
-      </div>
-      <div class="bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center">
-        <i data-lucide="search" class="mb-2 text-purple-400"></i>
-        SEO Friendly Design
-      </div>
-      <div class="bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center">
-        <i data-lucide="cloud" class="mb-2 text-purple-400"></i>
-        Firebase API Integration
+      <div onclick="showPage('service4')" class="cursor-pointer bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center hover:bg-gray-800">
+        <i data-lucide="server" class="mb-2 text-purple-400"></i> Admin Dashboards
       </div>
     </div>
   </section>
@@ -79,22 +62,19 @@
   <section id="projects" class="py-16 px-4 bg-gradient-to-b from-black via-gray-900 to-black text-center" data-aos="fade-up">
     <h2 class="text-3xl font-semibold mb-10">Live Projects</h2>
     <div class="flex flex-col md:flex-row justify-center gap-6 max-w-4xl mx-auto">
-      <div class="bg-gray-900 p-6 rounded-lg w-full md:w-1/3">
+      <div onclick="showPage('project1')" class="cursor-pointer bg-gray-900 p-6 rounded-lg w-full md:w-1/3 hover:bg-gray-800">
         <h3 class="text-xl font-bold mb-2">Live Projects</h3>
         <p class="text-gray-400">Raczt, Nextjie Pesigres</p>
-        <button onclick="showPage('demo1')" class="mt-4 bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded">View Demo</button>
       </div>
-      <div class="bg-gray-900 p-6 rounded-lg w-full md:w-1/3">
+      <div onclick="showPage('project2')" class="cursor-pointer bg-gray-900 p-6 rounded-lg w-full md:w-1/3 hover:bg-gray-800">
         <h3 class="text-xl font-bold mb-2">Basic</h3>
         <p class="text-3xl text-purple-500 font-bold">$99</p>
         <p class="text-gray-400">One Page Portfolio</p>
-        <button onclick="showPage('demo2')" class="mt-4 bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded">View Demo</button>
       </div>
-      <div class="bg-gray-900 p-6 rounded-lg w-full md:w-1/3">
+      <div onclick="showPage('project3')" class="cursor-pointer bg-gray-900 p-6 rounded-lg w-full md:w-1/3 hover:bg-gray-800">
         <h3 class="text-xl font-bold mb-2">Pro</h3>
         <p class="text-3xl text-purple-500 font-bold">$29</p>
         <p class="text-gray-400">Multi-page Site + CMS</p>
-        <button onclick="showPage('request')" class="mt-4 bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded">Request Project</button>
       </div>
     </div>
   </section>
@@ -102,22 +82,18 @@
   <!-- Why Choose Us Section -->
   <section id="why" class="py-16 px-4 text-center" data-aos="fade-up">
     <h2 class="text-3xl font-semibold mb-10">Why Choose PulseLogix</h2>
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-      <div class="bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center">
-        <i data-lucide="check-circle" class="mb-2 text-purple-400"></i>
-        100+ Projects Delivered
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+      <div onclick="showPage('why1')" class="cursor-pointer bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center hover:bg-gray-800">
+        <i data-lucide="check-circle" class="mb-2 text-purple-400"></i> 100+ Projects Delivered
       </div>
-      <div class="bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center">
-        <i data-lucide="star" class="mb-2 text-purple-400"></i>
-        5-Star Client Feedback
+      <div onclick="showPage('why2')" class="cursor-pointer bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center hover:bg-gray-800">
+        <i data-lucide="star" class="mb-2 text-purple-400"></i> 5-Star Client Feedback
       </div>
-      <div class="bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center">
-        <i data-lucide="monitor" class="mb-2 text-purple-400"></i>
-        Fully Responsive Sites
+      <div onclick="showPage('why3')" class="cursor-pointer bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center hover:bg-gray-800">
+        <i data-lucide="monitor" class="mb-2 text-purple-400"></i> Fully Responsive Sites
       </div>
-      <div class="bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center">
-        <i data-lucide="life-buoy" class="mb-2 text-purple-400"></i>
-        Ongoing Support
+      <div onclick="showPage('why4')" class="cursor-pointer bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center hover:bg-gray-800">
+        <i data-lucide="life-buoy" class="mb-2 text-purple-400"></i> Ongoing Support
       </div>
     </div>
   </section>
@@ -128,20 +104,60 @@
     <p class="text-gray-400 mt-4">Get in touch with us to start your project today!</p>
   </section>
 
-  <!-- Dynamic Page Sections -->
-  <section id="demo1" class="hidden py-16 px-4 text-center bg-black">
-    <h2 class="text-3xl font-bold mb-4 text-purple-400">Demo Project</h2>
-    <p class="text-gray-300 max-w-xl mx-auto">This is a demo view of our project "Raczt" — a clean, modern interface designed for speed and scalability using Next.js.</p>
+  <!-- Dynamic Content Sections -->
+  <section id="service1" class="hidden py-16 px-4 text-center bg-black">
+    <h2 class="text-3xl font-bold text-purple-400 mb-4">Custom Web Design</h2>
+    <p class="text-gray-300 max-w-xl mx-auto">Tailored websites that represent your brand with modern layouts, typography, and functionality.</p>
   </section>
 
-  <section id="demo2" class="hidden py-16 px-4 text-center bg-black">
-    <h2 class="text-3xl font-bold mb-4 text-purple-400">Basic Demo</h2>
-    <p class="text-gray-300 max-w-xl mx-auto">Explore our one-page portfolio template, optimized for freelancers and personal brands with blazing fast performance.</p>
+  <section id="service2" class="hidden py-16 px-4 text-center bg-black">
+    <h2 class="text-3xl font-bold text-purple-400 mb-4">UI/UX Wireframing</h2>
+    <p class="text-gray-300 max-w-xl mx-auto">Professional wireframes to define structure, flow, and clarity before development begins.</p>
   </section>
 
-  <section id="request" class="hidden py-16 px-4 text-center bg-black">
-    <h2 class="text-3xl font-bold mb-4 text-purple-400">Request Pro Project</h2>
-    <p class="text-gray-300 max-w-xl mx-auto">Ready to launch your full site? Contact us for custom multi-page websites with CMS and admin panels powered by Firebase.</p>
+  <section id="service3" class="hidden py-16 px-4 text-center bg-black">
+    <h2 class="text-3xl font-bold text-purple-400 mb-4">Responsive Layouts</h2>
+    <p class="text-gray-300 max-w-xl mx-auto">Designs that work seamlessly across devices, improving accessibility and engagement.</p>
+  </section>
+
+  <section id="service4" class="hidden py-16 px-4 text-center bg-black">
+    <h2 class="text-3xl font-bold text-purple-400 mb-4">Admin Dashboards</h2>
+    <p class="text-gray-300 max-w-xl mx-auto">Dynamic dashboards with analytics, controls, and security tailored to your admin needs.</p>
+  </section>
+
+  <section id="project1" class="hidden py-16 px-4 text-center bg-black">
+    <h2 class="text-3xl font-bold text-purple-400 mb-4">Live Projects</h2>
+    <p class="text-gray-300 max-w-xl mx-auto">Explore production-ready client builds like Raczt and Nextjie, showcasing innovation in design.</p>
+  </section>
+
+  <section id="project2" class="hidden py-16 px-4 text-center bg-black">
+    <h2 class="text-3xl font-bold text-purple-400 mb-4">Basic Plan</h2>
+    <p class="text-gray-300 max-w-xl mx-auto">Perfect for portfolios, featuring scroll animations, responsive grids, and custom branding.</p>
+  </section>
+
+  <section id="project3" class="hidden py-16 px-4 text-center bg-black">
+    <h2 class="text-3xl font-bold text-purple-400 mb-4">Pro Plan</h2>
+    <p class="text-gray-300 max-w-xl mx-auto">Ideal for businesses needing CMS, Firebase integrations, and SEO-optimized content.</p>
+  </section>
+
+  <section id="why1" class="hidden py-16 px-4 text-center bg-black">
+    <h2 class="text-3xl font-bold text-purple-400 mb-4">100+ Projects</h2>
+    <p class="text-gray-300 max-w-xl mx-auto">We’ve delivered over 100 projects with precision and creativity across various industries.</p>
+  </section>
+
+  <section id="why2" class="hidden py-16 px-4 text-center bg-black">
+    <h2 class="text-3xl font-bold text-purple-400 mb-4">5-Star Clients</h2>
+    <p class="text-gray-300 max-w-xl mx-auto">Clients love our dedication, design sense, and reliable service delivery.</p>
+  </section>
+
+  <section id="why3" class="hidden py-16 px-4 text-center bg-black">
+    <h2 class="text-3xl font-bold text-purple-400 mb-4">Responsive Sites</h2>
+    <p class="text-gray-300 max-w-xl mx-auto">We ensure mobile-first responsive interfaces for flawless experiences on all screens.</p>
+  </section>
+
+  <section id="why4" class="hidden py-16 px-4 text-center bg-black">
+    <h2 class="text-3xl font-bold text-purple-400 mb-4">Ongoing Support</h2>
+    <p class="text-gray-300 max-w-xl mx-auto">Need help post-launch? We offer affordable maintenance and upgrade support.</p>
   </section>
 
   <!-- Scripts -->
@@ -151,11 +167,15 @@
     lucide.createIcons();
 
     function showPage(id) {
-      ['demo1', 'demo2', 'request'].forEach(page => {
-        document.getElementById(page).classList.add('hidden');
-      });
-      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-      document.getElementById(id).classList.remove('hidden');
+      const sections = [
+        'service1','service2','service3','service4',
+        'project1','project2','project3',
+        'why1','why2','why3','why4'
+      ];
+      sections.forEach(s => document.getElementById(s).classList.add('hidden'));
+      const target = document.getElementById(id);
+      target.classList.remove('hidden');
+      target.scrollIntoView({ behavior: 'smooth' });
     }
   </script>
 </body>
