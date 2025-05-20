@@ -2,139 +2,223 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pulse Logix</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PulseLogix</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Poppins Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    /* Address text animation */
+    #address-text {
+      max-width: 300px;
+      margin: 0.5rem auto 0;
+      color: #a78bfa; /* Tailwind purple-400 */
+      font-weight: 600;
+      font-size: 1.125rem; /* text-lg */
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    #address-text.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
-<body class="bg-black text-white font-sans">
+<body class="bg-black text-white">
 
-  <!-- Navbar -->
-  <nav class="flex items-center justify-between p-6 bg-gradient-to-r from-purple-900 to-black">
-    <a href="#" class="text-3xl font-bold text-purple-400">Pulse Logix</a>
-    <button id="menu-btn" class="md:hidden focus:outline-none">
-      <svg class="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+  <!-- Header -->
+  <header class="bg-gray-800">
+    <div class="container mx-auto flex items-center justify-between p-4">
+      <a href="#">
+        <img src="https://i.ibb.co/fYLvD7pL/Picsart-25-04-18-19-33-02-595.png" alt="PulseLogix Logo" class="h-10" />
+      </a>
+      <nav class="hidden md:flex space-x-6">
+        <a href="#about" class="hover:text-purple-400 transition flex items-center gap-1">
+          <!-- About icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M12 20h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          About
+        </a>
+        <a href="#services" class="hover:text-purple-400 transition flex items-center gap-1">
+          <!-- Services icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3-3 3 3m0 6l-3 3-3-3" />
+          </svg>
+          Services
+        </a>
+        <a href="#projects" class="hover:text-purple-400 transition flex items-center gap-1">
+          <!-- Projects icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 7h18M3 12h18M3 17h18" />
+          </svg>
+          Projects
+        </a>
+        <a href="#why" class="hover:text-purple-400 transition flex items-center gap-1">
+          <!-- Why Us icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M12 20h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          Why Us
+        </a>
+        <a href="#contact" class="hover:text-purple-400 transition flex items-center gap-1">
+          <!-- Contact icon -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2 8l10 6 10-6M2 12l10 6 10-6M2 16l10 6 10-6" />
+          </svg>
+          Contact
+        </a>
+      </nav>
+      <!-- Mobile Menu Button -->
+      <button id="menu-btn" class="md:hidden focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden hidden bg-gray-800">
+      <a href="#about" class="block px-4 py-2 hover:bg-gray-700 flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M12 20h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        About
+      </a>
+      <a href="#services" class="block px-4 py-2 hover:bg-gray-700 flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3-3 3 3m0 6l-3 3-3-3" />
+        </svg>
+        Services
+      </a>
+      <a href="#projects" class="block px-4 py-2 hover:bg-gray-700 flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 7h18M3 12h18M3 17h18" />
+        </svg>
+        Projects
+      </a>
+      <a href="#why" class="block px-4 py-2 hover:bg-gray-700 flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M12 20h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        Why Us
+      </a>
+      <a href="#contact" class="block px-4 py-2 hover:bg-gray-700 flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M2 8l10 6 10-6M2 12l10 6 10-6M2 16l10 6 10-6" />
+        </svg>
+        Contact
+      </a>
+    </div>
+  </header>
+  <!-- Main content --> <main class="max-w-6xl mx-auto px-4 py-10">
+    <!-- About Section -->
+<section id="about" class="mb-16">
+  <h1 class="text-5xl text-purple-400 font-extrabold mb-4">PulseLogix</h1>
+  <p class="text-purple-300 text-lg max-w-xl">
+    PulseLogix is a professional web development agency, delivering your message to the world with impactful design and cutting-edge technology.
+  </p>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="mb-16">
+  <h2 class="text-3xl text-purple-400 font-semibold mb-6">Services</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <div class="bg-gray-900 rounded-md p-6 shadow hover:shadow-purple-500/50 transition flex flex-col items-center text-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 mb-4 text-purple-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M13 5v6h6" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M13 13l6 6m0 0H5m14 0v-6" />
       </svg>
+      <h3 class="text-xl font-semibold mb-2">Web Development</h3>
+      <p class="text-purple-300">Modern, responsive websites that capture your brand and connect with your audience.</p>
+    </div>
+    <div class="bg-gray-900 rounded-md p-6 shadow hover:shadow-purple-500/50 transition flex flex-col items-center text-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 mb-4 text-purple-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"></circle>
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19.4 15a8 8 0 01-14.8 0"></path>
+      </svg>
+      <h3 class="text-xl font-semibold mb-2">Brand Identity</h3>
+      <p class="text-purple-300">Unique brand visuals and voice to help you stand out in the crowded market.</p>
+    </div>
+    <div class="bg-gray-900 rounded-md p-6 shadow hover:shadow-purple-500/50 transition flex flex-col items-center text-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 mb-4 text-purple-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M9 19l-3-3m0 0l3-3m-3 3h12"></path>
+        <path stroke-linecap="round" stroke-linejoin="round" d="M19 13v6a2 2 0 002 2h.01a2 2 0 002-2v-6"></path>
+      </svg>
+      <h3 class="text-xl font-semibold mb-2">Digital Marketing</h3>
+      <p class="text-purple-300">Effective campaigns that increase your visibility and engagement online.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Projects Section -->
+<section id="projects" class="mb-16">
+  <h2 class="text-3xl text-purple-400 font-semibold mb-6">Projects</h2>
+  <p class="text-purple-300">A showcase of our recent work and client collaborations coming soon!</p>
+</section>
+
+<!-- Why Choose Us Section -->
+<section id="why" class="mb-16">
+  <h2 class="text-3xl text-purple-400 font-semibold mb-6">Why Choose Us?</h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <a href="why.html" class="bg-gray-900 rounded-md p-6 shadow hover:shadow-purple-500/50 transition flex flex-col items-center text-center cursor-pointer">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-14 h-14 mb-4 text-purple-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="10" stroke-linecap="round" stroke-linejoin="round" />
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3" />
+      </svg>
+      <p class="text-purple-300 font-semibold">3+ Years Industry Experience</p>
+    </a>
+    <a href="why.html" class="bg-gray-900 rounded-md p-6 shadow hover:shadow-purple-500/50 transition flex flex-col items-center text-center cursor-pointer">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-14 h-14 mb-4 text-purple-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-3-3v6m3 3l4-4m-14 0l4-4" />
+      </svg>
+      <p class="text-purple-300 font-semibold">Unique Brand Identity</p>
+    </a>
+    <a href="why.html" class="bg-gray-900 rounded-md p-6 shadow hover:shadow-purple-500/50 transition flex flex-col items-center text-center cursor-pointer">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-14 h-14 mb-4 text-purple-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8.485-8.485h-1M4.515 12.515h-1M16.95 7.05l-.707.707M7.757 16.243l-.707.707M16.95 16.95l-.707-.707M7.757 7.757l-.707-.707M12 7a5 5 0 100 10 5 5 0 000-10z" />
+      </svg>
+      <p class="text-purple-300 font-semibold">24/7 Support</p>
+    </a>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="mb-16 text-center">
+  <h2 class="text-3xl text-purple-400 font-semibold mb-6">Contact Us</h2>
+
+  <div class="flex justify-center gap-12 text-purple-300 mb-6">
+    <!-- WhatsApp -->
+    <a href="https://wa.me/919495411937" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="flex items-center gap-2 hover:text-green-400 transition cursor-pointer">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="#25D366" viewBox="0 0 24 24" width="28" height="28">
+        <path d="M20.52 3.48A11.9 11.9 0 0012 0a11.9 11.9 0 00-8.52 3.48A11.9 11.9 0 000 12a11.9 11.9 0 003.48 8.52A11.9 11.9 0 0012 24a11.9 11.9 0 008.52-3.48A11.9 11.9 0 0024 12a11.9 11.9 0 00-3.48-8.52zm-5.52 14.76h-.01a6.94 6.94 0 01-3.75-1.04l-.27-.16-2.22.58.59-2.17-.18-.28a6.91 6.91 0 011.04-8.03 6.88 6.88 0 015.43-2.42c3.8 0 6.9 3.1 6.9 6.91a6.9 6.9 0 01-6.9 6.91z"/>
+      </svg>
+      <span>WhatsApp</span>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://instagram.com/pulselogix" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="flex items-center gap-2 hover:text-pink-500 transition cursor-pointer">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="28" height="28" class="text-pink-500">
+        <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+        <path d="M16 11.37a4 4 0 11-4.73-4.73 4 4 0 014.73 4.73z"></path>
+        <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line>
+      </svg>
+      <span>Instagram</span>
+    </a>
+
+    <!-- Address -->
+    <button id="address-btn" class="flex items-center gap-2 hover:text-purple-400 transition cursor-pointer" aria-label="Address">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="28" height="28" class="text-purple-400">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 21C12 21 7 14 7 10a5 5 0 1110 0c0 4-5 11-5 11z" />
+        <circle cx="12" cy="10" r="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <span>Address</span>
     </button>
-    <ul id="mobile-menu" class="hidden md:flex space-x-8 text-lg">
-      <li><a href="#home" class="hover:text-purple-300">Home</a></li>
-      <li><a href="#services" class="hover:text-purple-300">Services</a></li>
-      <li><a href="#why" class="hover:text-purple-300">Why Choose Us</a></li>
-      <li><a href="#contact" class="hover:text-purple-300">Contact</a></li>
-    </ul>
-  </nav>
+  </div>
 
-  <!-- Hero Section -->
-  <section id="home" class="flex flex-col items-center justify-center min-h-screen px-6 text-center bg-gradient-to-b from-black via-purple-900 to-black">
-    <h1 class="text-5xl md:text-6xl font-extrabold mb-4">Pulse Logix</h1>
-    <p class="max-w-xl text-purple-300 mb-8 text-lg md:text-xl">Transforming your digital presence with innovative, creative solutions that speak volumes.</p>
-    <a href="#services" class="bg-purple-700 hover:bg-purple-800 text-white px-6 py-3 rounded-md text-lg font-semibold transition">Explore Our Services</a>
-  </section>
-
-  <!-- Services Section -->
-  <section id="services" class="py-16 px-6 bg-gradient-to-b from-purple-900 via-black to-purple-900 text-center">
-    <h2 class="text-4xl font-bold mb-12 text-purple-300">Our Services</h2>
-    <div class="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto">
-      <div class="bg-gray-900 p-8 rounded-lg shadow-lg hover:scale-105 transform transition">
-        <h3 class="text-2xl font-semibold mb-4 text-purple-400">Web Development</h3>
-        <p class="text-gray-300">Crafting stunning and responsive websites that engage and convert.</p>
-      </div>
-      <div class="bg-gray-900 p-8 rounded-lg shadow-lg hover:scale-105 transform transition">
-        <h3 class="text-2xl font-semibold mb-4 text-purple-400">Brand Identity</h3>
-        <p class="text-gray-300">Building unique brand identities that resonate with your audience.</p>
-      </div>
-      <div class="bg-gray-900 p-8 rounded-lg shadow-lg hover:scale-105 transform transition">
-        <h3 class="text-2xl font-semibold mb-4 text-purple-400">Digital Marketing</h3>
-        <p class="text-gray-300">Driving traffic and engagement through targeted digital campaigns.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Why Choose Us Section -->
-  <section id="why" class="py-16 px-6 bg-gradient-to-b from-black via-purple-900 to-black text-center text-purple-300">
-    <h2 class="text-4xl font-bold mb-12">Why Choose Pulse Logix?</h2>
-    <div class="grid md:grid-cols-3 gap-12 max-w-5xl mx-auto">
-      <a href="why.html" class="bg-gray-900 p-6 rounded-lg shadow-lg hover:scale-105 transform transition">
-        <div class="flex items-center gap-3 justify-center">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3" />
-            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none" />
-          </svg>
-          <span>3+ Years Industry Experience</span>
-        </div>
-      </a>
-      <a href="why.html" class="bg-gray-900 p-6 rounded-lg shadow-lg hover:scale-105 transform transition">
-        <div class="flex items-center gap-3 justify-center">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-3-3v6m3 3l4-4m-14 0l4-4" />
-          </svg>
-          <span>Unique Brand Identity</span>
-        </div>
-      </a>
-      <a href="why.html" class="bg-gray-900 p-6 rounded-lg shadow-lg hover:scale-105 transform transition">
-        <div class="flex items-center gap-3 justify-center">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8.485-8.485h-1M4.515 12.515h-1M16.95 7.05l-.707.707M7.757 16.243l-.707.707M16.95 16.95l-.707-.707M7.757 7.757l-.707-.707M12 7a5 5 0 100 10 5 5 0 000-10z" />
-          </svg>
-          <span>24/7 Support</span>
-        </div>
-      </a>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="py-16 px-6 bg-gradient-to-b from-purple-900 via-black to-black text-center">
-    <h2 class="text-3xl font-semibold mb-8 text-purple-300">Contact Us</h2>
-    <div class="flex justify-center gap-12 mb-6 text-purple-300">
-      <!-- WhatsApp -->
-      <a href="https://wa.me/919495411937" target="_blank" rel="noopener" aria-label="WhatsApp" class="flex items-center gap-2 hover:text-green-400 transition">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="#25D366" viewBox="0 0 24 24" width="24" height="24">
-          <path d="M20.52 3.48A11.9 11.9 0 0012 0a11.9 11.9 0 00-8.52 3.48A11.9 11.9 0 000 12a11.9 11.9 0 003.48 8.52A11.9 11.9 0 0012 24a11.9 11.9 0 008.52-3.48A11.9 11.9 0 0024 12a11.9 11.9 0 00-3.48-8.52zm-5.52 14.76h-.01a6.94 6.94 0 01-3.75-1.04l-.27-.16-2.22.58.59-2.17-.18-.28a6.91 6.91 0 011.04-8.03 6.88 6.88 0 015.43-2.42c3.8 0 6.9 3.1 6.9 6.91a6.9 6.9 0 01-6.9 6.9z"/>
-        </svg>
-        WhatsApp
-      </a>
-
-      <!-- Instagram -->
-      <a href="https://www.instagram.com/pulselogix/" target="_blank" rel="noopener" aria-label="Instagram" class="flex items-center gap-2 hover:text-pink-500 transition">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="#E1306C" viewBox="0 0 24 24" width="24" height="24">
-          <path d="M7.75 2h8.5A5.75 5.75 0 0122 7.75v8.5A5.75 5.75 0 0116.25 22h-8.5A5.75 5.75 0 012 16.25v-8.5A5.75 5.75 0 017.75 2zm0 1.5A4.25 4.25 0 003.5 7.75v8.5A4.25 4.25 0 007.75 20.5h8.5a4.25 4.25 0 004.25-4.25v-8.5A4.25 4.25 0 0016.25 3.5h-8.5zm8.75 3.75a1 1 0 110 2 1 1 0 010-2zM12 7a5 5 0 110 10 5 5 0 010-10zm0 1.5a3.5 3.5 0 100 7 3.5 3.5 0 000-7z"/>
-        </svg>
-        Instagram
-      </a>
-
-      <!-- Address (click reveals text) -->
-      <a href="#" id="address-btn" aria-label="Address" class="cursor-pointer text-purple-300 flex items-center gap-2 hover:text-purple-500 transition">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#9f7aea" stroke-width="2" viewBox="0 0 24 24" width="24" height="24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 11c1.656 0 3-1.344 3-3s-1.344-3-3-3-3 1.344-3 3 1.344 3 3 3z"/>
-          <path stroke-linecap="round" stroke-linejoin="round" d="M12 22s8-4.5 8-10c0-4.418-3.582-8-8-8S4 7.582 4 12c0 5.5 8 10 8 10z"/>
-        </svg>
-        Address
-      </a>
-    </div>
-    <div id="address-text" class="max-w-sm mx-auto text-purple-400"></div>
-  </section>
-
-  <script>
-    // Mobile menu toggle
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    menuBtn.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-
-    // Address reveal toggle
-    const addressBtn = document.getElementById('address-btn');
-    const addressText = document.getElementById('address-text');
-    addressBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (addressText.classList.contains('show')) {
-        addressText.classList.remove('show');
-        addressText.textContent = '';
-      } else {
-        addressText.textContent = 'Malappuram, Kerala, India';
-        addressText.classList.add('show');
-      }
-    });
-  </script>
-</body>
-</html>
+  <div id="address-text" class="" aria-live="polite" role="region"></div>
+</section>
+</main> <script> // Mobile menu toggle const menuBtn = document.getElementById('menu-btn'); const mobileMenu = document.getElementById('mobile-menu'); menuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); }); // Address animation and toggle text const addressBtn = document.getElementById('address-btn'); const addressText = document.getElementById('address-text'); const addressInfo = "1234 PulseLogix Street, Tech City, TX 75001"; let addressVisible = false; addressBtn.addEventListener('click', () => { addressVisible = !addressVisible; if(addressVisible) { addressText.textContent = addressInfo; addressText.classList.add('show'); } else { addressText.classList.remove('show'); setTimeout(() => { addressText.textContent = ''; }, 500); } }); </script> </body> </html>
