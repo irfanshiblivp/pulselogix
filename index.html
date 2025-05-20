@@ -5,178 +5,152 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PulseLogix</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Poppins Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
   </style>
 </head>
-<body class="bg-black text-white font-sans">
+<body class="bg-black text-white">
 
   <!-- Header -->
-  <header class="bg-gray-950 shadow-lg">
-    <div class="flex justify-between items-center px-6 py-4">
-      <h1 class="text-2xl font-bold text-purple-500">PulseLogix</h1>
-      <button class="md:hidden" onclick="document.getElementById('menu').classList.toggle('hidden')">
-        <i data-lucide="menu" class="text-white w-6 h-6"></i>
-      </button>
-      <nav class="hidden md:flex space-x-4" id="menu">
-        <a href="#about" class="hover:text-purple-400 block">About</a>
-        <a href="#services" class="hover:text-purple-400 block">Services</a>
-        <a href="#projects" class="hover:text-purple-400 block">Projects</a>
-        <a href="#why" class="hover:text-purple-400 block">Why Us</a>
-        <a href="#contact" class="hover:text-purple-400 block">Contact</a>
+  <header class="bg-gray-800">
+    <div class="container mx-auto flex items-center justify-between p-4">
+      <a href="#">
+        <img src="https://i.ibb.co/fYLvD7pL/Picsart-25-04-18-19-33-02-595.png" alt="PulseLogix Logo" class="h-10">
+      </a>
+      <nav class="hidden md:flex space-x-6">
+        <a href="#about" class="hover:text-purple-400 transition">About</a>
+        <a href="#services" class="hover:text-purple-400 transition">Services</a>
+        <a href="#projects" class="hover:text-purple-400 transition">Projects</a>
+        <a href="#why" class="hover:text-purple-400 transition">Why Us</a>
+        <a href="#contact" class="hover:text-purple-400 transition">Contact</a>
       </nav>
+      <!-- Mobile Menu Button -->
+      <button id="menu-btn" class="md:hidden focus:outline-none">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="md:hidden hidden bg-gray-800">
+      <a href="#about" class="block px-4 py-2 hover:bg-gray-700">About</a>
+      <a href="#services" class="block px-4 py-2 hover:bg-gray-700">Services</a>
+      <a href="#projects" class="block px-4 py-2 hover:bg-gray-700">Projects</a>
+      <a href="#why" class="block px-4 py-2 hover:bg-gray-700">Why Us</a>
+      <a href="#contact" class="block px-4 py-2 hover:bg-gray-700">Contact</a>
     </div>
   </header>
 
   <!-- About Section -->
-  <section id="about" class="text-center py-16 px-4 bg-gradient-to-b from-purple-900 via-black to-black" data-aos="fade-up">
-    <h2 class="text-4xl font-bold mb-4">About PulseLogix</h2>
+  <section id="about" class="text-center py-16 px-4 bg-gradient-to-b from-purple-900 via-black to-black">
+    <h1 class="text-4xl font-bold mb-4">About PulseLogix</h1>
     <p class="max-w-2xl mx-auto text-gray-300">
-      PulseLogix is a futuristic freelance web design brand with years of experience in UI/UX, SEO, custom interfaces,
+      Pulseelico is a futuristic freelance web design brand with years of experience in UI/UX, SEO, custom interfaces,
       and responsive websites for startups, personal brands, and businesses.
     </p>
   </section>
 
   <!-- Services Section -->
-  <section id="services" class="py-16 px-4 text-center" data-aos="fade-up">
+  <section id="services" class="py-16 px-4 text-center">
     <h2 class="text-3xl font-semibold mb-10">Services</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-      <div onclick="showPage('service1')" class="cursor-pointer bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center hover:bg-gray-800">
-        <i data-lucide="layout-dashboard" class="mb-2 text-purple-400"></i> Custom Web Design
-      </div>
-      <div onclick="showPage('service2')" class="cursor-pointer bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center hover:bg-gray-800">
-        <i data-lucide="pen-tool" class="mb-2 text-purple-400"></i> UI/UX Wireframing
-      </div>
-      <div onclick="showPage('service3')" class="cursor-pointer bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center hover:bg-gray-800">
-        <i data-lucide="smartphone" class="mb-2 text-purple-400"></i> Responsive Layouts
-      </div>
-      <div onclick="showPage('service4')" class="cursor-pointer bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center hover:bg-gray-800">
-        <i data-lucide="server" class="mb-2 text-purple-400"></i> Admin Dashboards
-      </div>
+      <a href="services.html" class="bg-gray-900 p-6 rounded-lg shadow-lg hover:scale-105 transform transition">
+        Custom Web Design
+      </a>
+      <a href="services.html" class="bg-gray-900 p-6 rounded-lg shadow-lg hover:scale-105 transform transition">
+        UI/UX Wireframing
+      </a>
+      <a href="services.html" class="bg-gray-900 p-6 rounded-lg shadow-lg hover:scale-105 transform transition">
+        Responsive Layouts
+      </a>
+      <a href="services.html" class="bg-gray-900 p-6 rounded-lg shadow-lg hover:scale-105 transform transition">
+        Admin Dashboards
+      </a>
+      <a href="services.html" class="bg-gray-900 p-6 rounded-lg shadow-lg hover:scale-105 transform transition">
+        E-commerce & CMS
+      </a>
+      <a href="services.html" class="bg-gray-900 p-6 rounded-lg shadow-lg hover:scale-105 transform transition">
+        Performance Optimization
+      </a>
+      <a href="services.html" class="bg-gray-900 p-6 rounded-lg shadow-lg hover:scale-105 transform transition">
+        SEO Friendly Design
+      </a>
+      <a href="services.html" class="bg-gray-900 p-6 rounded-lg shadow-lg hover:scale-105 transform transition">
+        Firebase API Integration
+      </a>
     </div>
   </section>
 
   <!-- Live Projects Section -->
-  <section id="projects" class="py-16 px-4 bg-gradient-to-b from-black via-gray-900 to-black text-center" data-aos="fade-up">
+  <section id="projects" class="py-16 px-4 bg-gradient-to-b from-black via-gray-900 to-black text-center">
     <h2 class="text-3xl font-semibold mb-10">Live Projects</h2>
     <div class="flex flex-col md:flex-row justify-center gap-6 max-w-4xl mx-auto">
-      <div onclick="showPage('project1')" class="cursor-pointer bg-gray-900 p-6 rounded-lg w-full md:w-1/3 hover:bg-gray-800">
-        <h3 class="text-xl font-bold mb-2">Live Projects</h3>
-        <p class="text-gray-400">Raczt, Nextjie Pesigres</p>
+      <div class="bg-gray-900 p-6 rounded-lg w-full md:w-1/3 hover:scale-105 transform transition">
+        <h3 class="text-xl font-bold mb-2">Ultra Pro</h3>
+        <p class="text-3xl text-purple-500 font-bold">$300</p>
+        <p class="text-gray-400">Advanced Multi-page Site</p>
+        <a href="projects.html" class="mt-4 inline-block bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded transition">
+          View Demo
+        </a>
       </div>
-      <div onclick="showPage('project2')" class="cursor-pointer bg-gray-900 p-6 rounded-lg w-full md:w-1/3 hover:bg-gray-800">
+      <div class="bg-gray-900 p-6 rounded-lg w-full md:w-1/3 hover:scale-105 transform transition">
         <h3 class="text-xl font-bold mb-2">Basic</h3>
         <p class="text-3xl text-purple-500 font-bold">$99</p>
         <p class="text-gray-400">One Page Portfolio</p>
+        <a href="projects.html" class="mt-4 inline-block bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded transition">
+          View Demo
+        </a>
       </div>
-      <div onclick="showPage('project3')" class="cursor-pointer bg-gray-900 p-6 rounded-lg w-full md:w-1/3 hover:bg-gray-800">
+      <div class="bg-gray-900 p-6 rounded-lg w-full md:w-1/3 hover:scale-105 transform transition">
         <h3 class="text-xl font-bold mb-2">Pro</h3>
         <p class="text-3xl text-purple-500 font-bold">$29</p>
         <p class="text-gray-400">Multi-page Site + CMS</p>
+        <a href="projects.html" class="mt-4 inline-block bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded transition">
+          Request Project
+        </a>
       </div>
     </div>
   </section>
 
   <!-- Why Choose Us Section -->
-  <section id="why" class="py-16 px-4 text-center" data-aos="fade-up">
+  <section id="why" class="py-16 px-4 text-center">
     <h2 class="text-3xl font-semibold mb-10">Why Choose PulseLogix</h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
-      <div onclick="showPage('why1')" class="cursor-pointer bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center hover:bg-gray-800">
-        <i data-lucide="check-circle" class="mb-2 text-purple-400"></i> 100+ Projects Delivered
-      </div>
-      <div onclick="showPage('why2')" class="cursor-pointer bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center hover:bg-gray-800">
-        <i data-lucide="star" class="mb-2 text-purple-400"></i> 5-Star Client Feedback
-      </div>
-      <div onclick="showPage('why3')" class="cursor-pointer bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center hover:bg-gray-800">
-        <i data-lucide="monitor" class="mb-2 text-purple-400"></i> Fully Responsive Sites
-      </div>
-      <div onclick="showPage('why4')" class="cursor-pointer bg-gray-900 p-6 rounded-lg shadow-lg flex flex-col items-center hover:bg-gray-800">
-        <i data-lucide="life-buoy" class="mb-2 text-purple-400"></i> Ongoing Support
-      </div>
+      <a href="why.html" class="bg-gray-900 p-6 rounded-lg shadow-lg hover:scale-105 transform transition">
+        100+ Projects Delivered
+      </a>
+      <a href="why.html" class="bg-gray-900 p-6 rounded-lg shadow-lg hover:scale-105 transform transition">
+        5-Star Client Feedback
+      </a>
+      <a href="why.html" class="bg-gray-900 p-6 rounded-lg shadow-lg hover:scale-105 transform transition">
+        Fully Responsive Sites
+      </a>
+      <a href="why.html" class="bg-gray-900 p-6 rounded-lg shadow-lg hover:scale-105 transform transition">
+        Ongoing Support
+      </a>
     </div>
   </section>
 
   <!-- Contact Section -->
-  <section id="contact" class="py-16 px-4 bg-gray-950 text-center" data-aos="fade-up">
+  <section id="contact" class="py-16 px-4 bg-gray-950 text-center">
     <h2 class="text-3xl font-semibold">Contact</h2>
     <p class="text-gray-400 mt-4">Get in touch with us to start your project today!</p>
   </section>
 
-  <!-- Dynamic Content Sections -->
-  <section id="service1" class="hidden py-16 px-4 text-center bg-black">
-    <h2 class="text-3xl font-bold text-purple-400 mb-4">Custom Web Design</h2>
-    <p class="text-gray-300 max-w-xl mx-auto">Tailored websites that represent your brand with modern layouts, typography, and functionality.</p>
-  </section>
-
-  <section id="service2" class="hidden py-16 px-4 text-center bg-black">
-    <h2 class="text-3xl font-bold text-purple-400 mb-4">UI/UX Wireframing</h2>
-    <p class="text-gray-300 max-w-xl mx-auto">Professional wireframes to define structure, flow, and clarity before development begins.</p>
-  </section>
-
-  <section id="service3" class="hidden py-16 px-4 text-center bg-black">
-    <h2 class="text-3xl font-bold text-purple-400 mb-4">Responsive Layouts</h2>
-    <p class="text-gray-300 max-w-xl mx-auto">Designs that work seamlessly across devices, improving accessibility and engagement.</p>
-  </section>
-
-  <section id="service4" class="hidden py-16 px-4 text-center bg-black">
-    <h2 class="text-3xl font-bold text-purple-400 mb-4">Admin Dashboards</h2>
-    <p class="text-gray-300 max-w-xl mx-auto">Dynamic dashboards with analytics, controls, and security tailored to your admin needs.</p>
-  </section>
-
-  <section id="project1" class="hidden py-16 px-4 text-center bg-black">
-    <h2 class="text-3xl font-bold text-purple-400 mb-4">Live Projects</h2>
-    <p class="text-gray-300 max-w-xl mx-auto">Explore production-ready client builds like Raczt and Nextjie, showcasing innovation in design.</p>
-  </section>
-
-  <section id="project2" class="hidden py-16 px-4 text-center bg-black">
-    <h2 class="text-3xl font-bold text-purple-400 mb-4">Basic Plan</h2>
-    <p class="text-gray-300 max-w-xl mx-auto">Perfect for portfolios, featuring scroll animations, responsive grids, and custom branding.</p>
-  </section>
-
-  <section id="project3" class="hidden py-16 px-4 text-center bg-black">
-    <h2 class="text-3xl font-bold text-purple-400 mb-4">Pro Plan</h2>
-    <p class="text-gray-300 max-w-xl mx-auto">Ideal for businesses needing CMS, Firebase integrations, and SEO-optimized content.</p>
-  </section>
-
-  <section id="why1" class="hidden py-16 px-4 text-center bg-black">
-    <h2 class="text-3xl font-bold text-purple-400 mb-4">100+ Projects</h2>
-    <p class="text-gray-300 max-w-xl mx-auto">We’ve delivered over 100 projects with precision and creativity across various industries.</p>
-  </section>
-
-  <section id="why2" class="hidden py-16 px-4 text-center bg-black">
-    <h2 class="text-3xl font-bold text-purple-400 mb-4">5-Star Clients</h2>
-    <p class="text-gray-300 max-w-xl mx-auto">Clients love our dedication, design sense, and reliable service delivery.</p>
-  </section>
-
-  <section id="why3" class="hidden py-16 px-4 text-center bg-black">
-    <h2 class="text-3xl font-bold text-purple-400 mb-4">Responsive Sites</h2>
-    <p class="text-gray-300 max-w-xl mx-auto">We ensure mobile-first responsive interfaces for flawless experiences on all screens.</p>
-  </section>
-
-  <section id="why4" class="hidden py-16 px-4 text-center bg-black">
-    <h2 class="text-3xl font-bold text-purple-400 mb-4">Ongoing Support</h2>
-    <p class="text-gray-300 max-w-xl mx-auto">Need help post-launch? We offer affordable maintenance and upgrade support.</p>
-  </section>
-
-  <!-- Scripts -->
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <!-- JavaScript for Mobile Menu Toggle -->
   <script>
-    AOS.init();
-    lucide.createIcons();
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
 
-    function showPage(id) {
-      const sections = [
-        'service1','service2','service3','service4',
-        'project1','project2','project3',
-        'why1','why2','why3','why4'
-      ];
-      sections.forEach(s => document.getElementById(s).classList.add('hidden'));
-      const target = document.getElementById(id);
-      target.classList.remove('hidden');
-      target.scrollIntoView({ behavior: 'smooth' });
-    }
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
   </script>
+
 </body>
 </html>
