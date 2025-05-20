@@ -6,25 +6,38 @@
   <title>PulseLogix</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Poppins Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome CDN for Icons -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-pO1xZjHeJrWr0Sg5+syB03rqUq3jOnylEXewA3soKqZxhF1uEwqVw8QyfzB93S6b9/ROcR3kR6Ld/tGQ7Wb02Q=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
   <style>
     body {
       font-family: 'Poppins', sans-serif;
     }
-    /* Address text animation */
-    #address-text {
-      max-width: 300px;
-      margin: 0.5rem auto 0;
-      color: #a78bfa; /* Tailwind purple-400 */
-      font-weight: 600;
-      font-size: 1.125rem; /* text-lg */
+
+    /* Address animation */
+    #address-info {
+      max-width: 0;
       opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
+      overflow: hidden;
+      white-space: nowrap;
+      transition: max-width 0.6s ease, opacity 0.6s ease;
+      margin-top: 0.5rem;
+      font-weight: 600;
+      font-size: 1.125rem;
+      color: #a78bfa; /* Tailwind purple-400 */
+      font-family: 'Poppins', sans-serif;
+      letter-spacing: 0.05em;
     }
-    #address-text.show {
+
+    #address-info.show {
+      max-width: 500px;
       opacity: 1;
-      transform: translateY(0);
     }
   </style>
 </head>
@@ -34,191 +47,181 @@
   <header class="bg-gray-800">
     <div class="container mx-auto flex items-center justify-between p-4">
       <a href="#">
-        <img src="https://i.ibb.co/fYLvD7pL/Picsart-25-04-18-19-33-02-595.png" alt="PulseLogix Logo" class="h-10" />
+        <img src="https://i.ibb.co/fYLvD7pL/Picsart-25-04-18-19-33-02-595.png" alt="PulseLogix Logo" class="h-10">
       </a>
       <nav class="hidden md:flex space-x-6">
-        <a href="#about" class="hover:text-purple-400 transition flex items-center gap-1">
-          <!-- About icon -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M12 20h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          About
-        </a>
-        <a href="#services" class="hover:text-purple-400 transition flex items-center gap-1">
-          <!-- Services icon -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3-3 3 3m0 6l-3 3-3-3" />
-          </svg>
-          Services
-        </a>
-        <a href="#projects" class="hover:text-purple-400 transition flex items-center gap-1">
-          <!-- Projects icon -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M3 7h18M3 12h18M3 17h18" />
-          </svg>
-          Projects
-        </a>
-        <a href="#why" class="hover:text-purple-400 transition flex items-center gap-1">
-          <!-- Why Us icon -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M12 20h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-          </svg>
-          Why Us
-        </a>
-        <a href="#contact" class="hover:text-purple-400 transition flex items-center gap-1">
-          <!-- Contact icon -->
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M2 8l10 6 10-6M2 12l10 6 10-6M2 16l10 6 10-6" />
-          </svg>
-          Contact
-        </a>
+        <a href="#about" class="hover:text-purple-400 transition">About</a>
+        <a href="#services" class="hover:text-purple-400 transition">Services</a>
+        <a href="#projects" class="hover:text-purple-400 transition">Projects</a>
+        <a href="#why" class="hover:text-purple-400 transition">Why Us</a>
+        <a href="#contact" class="hover:text-purple-400 transition">Contact</a>
       </nav>
       <!-- Mobile Menu Button -->
       <button id="menu-btn" class="md:hidden focus:outline-none">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>
     </div>
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="md:hidden hidden bg-gray-800">
-      <a href="#about" class="block px-4 py-2 hover:bg-gray-700 flex items-center gap-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M12 20h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-        About
-      </a>
-      <a href="#services" class="block px-4 py-2 hover:bg-gray-700 flex items-center gap-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3-3 3 3m0 6l-3 3-3-3" />
-        </svg>
-        Services
-      </a>
-      <a href="#projects" class="block px-4 py-2 hover:bg-gray-700 flex items-center gap-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M3 7h18M3 12h18M3 17h18" />
-        </svg>
-        Projects
-      </a>
-      <a href="#why" class="block px-4 py-2 hover:bg-gray-700 flex items-center gap-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M12 20h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-        Why Us
-      </a>
-      <a href="#contact" class="block px-4 py-2 hover:bg-gray-700 flex items-center gap-2">
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M2 8l10 6 10-6M2 12l10 6 10-6M2 16l10 6 10-6" />
-        </svg>
-        Contact
-      </a>
+      <a href="#about" class="block px-4 py-2 hover:bg-gray-700">About</a>
+      <a href="#services" class="block px-4 py-2 hover:bg-gray-700">Services</a>
+      <a href="#projects" class="block px-4 py-2 hover:bg-gray-700">Projects</a>
+      <a href="#why" class="block px-4 py-2 hover:bg-gray-700">Why Us</a>
+      <a href="#contact" class="block px-4 py-2 hover:bg-gray-700">Contact</a>
     </div>
   </header>
-  <!-- Main content --> <main class="max-w-6xl mx-auto px-4 py-10">
-    <!-- About Section -->
-<section id="about" class="mb-16">
-  <h1 class="text-5xl text-purple-400 font-extrabold mb-4">PulseLogix</h1>
-  <p class="text-purple-300 text-lg max-w-xl">
-    PulseLogix is a professional web development agency, delivering your message to the world with impactful design and cutting-edge technology.
-  </p>
-</section>
 
-<!-- Services Section -->
-<section id="services" class="mb-16">
-  <h2 class="text-3xl text-purple-400 font-semibold mb-6">Services</h2>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-    <div class="bg-gray-900 rounded-md p-6 shadow hover:shadow-purple-500/50 transition flex flex-col items-center text-center">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 mb-4 text-purple-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M13 5v6h6" />
-        <path stroke-linecap="round" stroke-linejoin="round" d="M13 13l6 6m0 0H5m14 0v-6" />
-      </svg>
-      <h3 class="text-xl font-semibold mb-2">Web Development</h3>
-      <p class="text-purple-300">Modern, responsive websites that capture your brand and connect with your audience.</p>
+  <!-- About Section -->
+  <section id="about" class="text-center py-16 px-4 bg-gradient-to-b from-purple-900 via-black to-black">
+    <h1 class="text-4xl font-bold mb-4">About PulseLogix</h1>
+    <p class="max-w-2xl mx-auto text-gray-300">
+      Pulseelico is a futuristic freelance web design brand with years of experience in UI/UX, SEO, custom interfaces,
+      and responsive websites for startups, personal brands, and businesses.
+    </p>
+  </section>
+
+  <!-- Services Section -->
+  <section id="services" class="py-16 px-4 text-center">
+    <h2 class="text-3xl font-semibold mb-10">Services</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+      <a href="services.html" class="bg-gray-900 p-6 rounded-lg shadow-lg hover:scale-105 transform transition flex flex-col items-center space-y-3">
+        <i class="fas fa-paint-brush text-purple-500 text-4xl"></i>
+        <span>Custom Web Design</span>
+      </a>
+      <a href="services.html" class="bg-gray-900 p-6 rounded-lg shadow-lg hover:scale-105 transform transition flex flex-col items-center space-y-3">
+        <i class="fas fa-pencil-ruler text-purple-500 text-4xl"></i>
+        <span>UI/UX Wireframing</span>
+      </a>
+      <a href="services.html" class="bg-gray-900 p-6 rounded-lg shadow-lg hover:scale-105 transform transition flex flex-col items-center space-y-3">
+        <i class="fas fa-mobile-alt text-purple-500 text-4xl"></i>
+        <span>Responsive Layouts</span>
+      </a>
+      <a href="services.html" class="bg-gray-900 p-6 rounded-lg shadow-lg hover:scale-105 transform transition flex flex-col items-center space-y-3">
+        <i class="fas fa-tachometer-alt text-purple-500 text-4xl"></i>
+        <span>Admin Dashboards</span>
+      </a>
+      <a href="services.html" class="bg-gray-900 p-6 rounded-lg shadow-lg hover:scale-105 transform transition flex flex-col items-center space-y-3">
+        <i class="fas fa-shopping-cart text-purple-500 text-4xl"></i>
+        <span>E-commerce & CMS</span>
+      </a>
+      <a href="services.html" class="bg-gray-900 p-6 rounded-lg shadow-lg hover:scale-105 transform transition flex flex-col items-center space-y-3">
+        <i class="fas fa-bolt text-purple-500 text-4xl"></i>
+        <span>Performance Optimization</span>
+      </a>
+      <a href="services.html" class="bg-gray-900 p-6 rounded-lg shadow-lg hover:scale-105 transform transition flex flex-col items-center space-y-3">
+        <i class="fas fa-search text-purple-500 text-4xl"></i>
+        <span>SEO Friendly Design</span>
+      </a>
+      <a href="services.html" class="bg-gray-900 p-6 rounded-lg shadow-lg hover:scale-105 transform transition flex flex-col items-center space-y-3">
+        <i class="fas fa-database text-purple-500 text-4xl"></i>
+        <span>Firebase API Integration</span>
+      </a>
     </div>
-    <div class="bg-gray-900 rounded-md p-6 shadow hover:shadow-purple-500/50 transition flex flex-col items-center text-center">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 mb-4 text-purple-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="3" stroke-linecap="round" stroke-linejoin="round"></circle>
-        <path stroke-linecap="round" stroke-linejoin="round" d="M19.4 15a8 8 0 01-14.8 0"></path>
-      </svg>
-      <h3 class="text-xl font-semibold mb-2">Brand Identity</h3>
-      <p class="text-purple-300">Unique brand visuals and voice to help you stand out in the crowded market.</p>
+  </section>
+
+  <!-- Live Projects Section -->
+  <section id="projects" class="py-16 px-4 bg-gradient-to-b from-black via-gray-900 to-black text-center">
+    <h2 class="text-3xl font-semibold mb-10">Live Projects</h2>
+    <div class="flex flex-col md:flex-row justify-center gap-6 max-w-4xl mx-auto">
+      <div class="bg-gray-900 p-6 rounded-lg w-full md:w-1/3 hover:scale-105 transform transition">
+        <h3 class="text-xl font-bold mb-2">Ultra Pro</h3>
+        <p class="text-3xl text-purple-500 font-bold">$300</p>
+        <p class="text-gray-400">Advanced Multi-page Site</p>
+        <a href="projects.html" class="mt-4 inline-block bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded transition">
+          View Demo
+        </a>
+      </div>
+      <div class="bg-gray-900 p-6 rounded-lg w-full md:w-1/3 hover:scale-105 transform transition">
+        <h3 class="text-xl font-bold mb-2">Basic</h3>
+        <p class="text-3xl text-purple-500 font-bold">$99</p>
+        <p class="text-gray-400">One Page Portfolio</p>
+        <a href="projects.html" class="mt-4 inline-block bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded transition">
+          View Demo
+        </a>
+      </div>
+      <div class="bg-gray-900 p-6 rounded-lg w-full md:w-1/3 hover:scale-105 transform transition">
+        <h3 class="text-xl font-bold mb-2">Pro</h3>
+        <p class="text-3xl text-purple-500 font-bold">$29</p>
+        <p class="text-gray-400">Multi-page Site + CMS</p>
+        <a href="projects.html" class="mt-4 inline-block bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded transition">
+          Request Project
+        </a>
+      </div>
     </div>
-    <div class="bg-gray-900 rounded-md p-6 shadow hover:shadow-purple-500/50 transition flex flex-col items-center text-center">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 mb-4 text-purple-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M9 19l-3-3m0 0l3-3m-3 3h12"></path>
-        <path stroke-linecap="round" stroke-linejoin="round" d="M19 13v6a2 2 0 002 2h.01a2 2 0 002-2v-6"></path>
-      </svg>
-      <h3 class="text-xl font-semibold mb-2">Digital Marketing</h3>
-      <p class="text-purple-300">Effective campaigns that increase your visibility and engagement online.</p>
+  </section>
+
+  <!-- Why Choose Us Section -->
+  <section id="why" class="py-16 px-4 text-center">
+    <h2 class="text-3xl font-semibold mb-10">Why Choose PulseLogix</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-5xl mx-auto">
+      <a href="why.html" class="bg-gray-900 p-6 rounded-lg shadow-lg hover:scale-105 transform transition flex flex-col items-center space-y-3">
+        <i class="fas fa-check-circle text-purple-500 text-4xl"></i>
+        <span>100+ Projects Delivered</span>
+      </a>
+      <a href="why.html" class="bg-gray-900 p-6 rounded-lg shadow-lg hover:scale-105 transform transition flex flex-col items-center space-y-3">
+        <i class="fas fa-star text-purple-500 text-4xl"></i>
+        <span>5-Star Client Feedback</span>
+      </a>
+      <a href="why.html" class="bg-gray-900 p-6 rounded-lg shadow-lg hover:scale-105 transform transition flex flex-col items-center space-y-3">
+        <i class="fas fa-mobile-alt text-purple-500 text-4xl"></i>
+        <span>Fully Responsive Sites</span>
+      </a>
+      <a href="why.html" class="bg-gray-900 p-6 rounded-lg shadow-lg hover:scale-105 transform transition flex flex-col items-center space-y-3">
+        <i class="fas fa-headset text-purple-500 text-4xl"></i>
+        <span>Ongoing Support</span>
+      </a>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Projects Section -->
-<section id="projects" class="mb-16">
-  <h2 class="text-3xl text-purple-400 font-semibold mb-6">Projects</h2>
-  <p class="text-purple-300">A showcase of our recent work and client collaborations coming soon!</p>
-</section>
+  <!-- Contact Section -->
+  <section id="contact" class="py-16 px-4 bg-gray-950 text-center">
+    <h2 class="text-3xl font-semibold">Contact</h2>
+    <p class="text-gray-400 mt-4 mb-8">Get in touch with us to start your project today!</p>
 
-<!-- Why Choose Us Section -->
-<section id="why" class="mb-16">
-  <h2 class="text-3xl text-purple-400 font-semibold mb-6">Why Choose Us?</h2>
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-    <a href="why.html" class="bg-gray-900 rounded-md p-6 shadow hover:shadow-purple-500/50 transition flex flex-col items-center text-center cursor-pointer">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-14 h-14 mb-4 text-purple-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="10" stroke-linecap="round" stroke-linejoin="round" />
-        <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3" />
-      </svg>
-      <p class="text-purple-300 font-semibold">3+ Years Industry Experience</p>
-    </a>
-    <a href="why.html" class="bg-gray-900 rounded-md p-6 shadow hover:shadow-purple-500/50 transition flex flex-col items-center text-center cursor-pointer">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-14 h-14 mb-4 text-purple-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-3-3v6m3 3l4-4m-14 0l4-4" />
-      </svg>
-      <p class="text-purple-300 font-semibold">Unique Brand Identity</p>
-    </a>
-    <a href="why.html" class="bg-gray-900 rounded-md p-6 shadow hover:shadow-purple-500/50 transition flex flex-col items-center text-center cursor-pointer">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-14 h-14 mb-4 text-purple-400" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m8.485-8.485h-1M4.515 12.515h-1M16.95 7.05l-.707.707M7.757 16.243l-.707.707M16.95 16.95l-.707-.707M7.757 7.757l-.707-.707M12 7a5 5 0 100 10 5 5 0 000-10z" />
-      </svg>
-      <p class="text-purple-300 font-semibold">24/7 Support</p>
-    </a>
-  </div>
-</section>
+    <div class="flex justify-center space-x-10 text-purple-400 text-3xl">
+      <a href="https://wa.me/1234567890" target="_blank" aria-label="WhatsApp" class="hover:text-purple-600 transition">
+        <i class="fab fa-whatsapp"></i>
+      </a>
+      <a href="https://instagram.com/pulselogix" target="_blank" aria-label="Instagram" class="hover:text-purple-600 transition">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <button id="address-btn" aria-label="Address" class="hover:text-purple-600 transition focus:outline-none">
+        <i class="fas fa-map-marker-alt"></i>
+      </button>
+    </div>
+    <div id="address-info" role="region" aria-live="polite" aria-atomic="true"></div>
+  </section>
 
-<!-- Contact Section -->
-<section id="contact" class="mb-16 text-center">
-  <h2 class="text-3xl text-purple-400 font-semibold mb-6">Contact Us</h2>
+  <!-- JavaScript for Mobile Menu Toggle and Address Animation -->
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
 
-  <div class="flex justify-center gap-12 text-purple-300 mb-6">
-    <!-- WhatsApp -->
-    <a href="https://wa.me/919495411937" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" class="flex items-center gap-2 hover:text-green-400 transition cursor-pointer">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="#25D366" viewBox="0 0 24 24" width="28" height="28">
-        <path d="M20.52 3.48A11.9 11.9 0 0012 0a11.9 11.9 0 00-8.52 3.48A11.9 11.9 0 000 12a11.9 11.9 0 003.48 8.52A11.9 11.9 0 0012 24a11.9 11.9 0 008.52-3.48A11.9 11.9 0 0024 12a11.9 11.9 0 00-3.48-8.52zm-5.52 14.76h-.01a6.94 6.94 0 01-3.75-1.04l-.27-.16-2.22.58.59-2.17-.18-.28a6.91 6.91 0 011.04-8.03 6.88 6.88 0 015.43-2.42c3.8 0 6.9 3.1 6.9 6.91a6.9 6.9 0 01-6.9 6.91z"/>
-      </svg>
-      <span>WhatsApp</span>
-    </a>
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
 
-    <!-- Instagram -->
-    <a href="https://instagram.com/pulselogix" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="flex items-center gap-2 hover:text-pink-500 transition cursor-pointer">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="28" height="28" class="text-pink-500">
-        <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-        <path d="M16 11.37a4 4 0 11-4.73-4.73 4 4 0 014.73 4.73z"></path>
-        <line x1="17.5" y1="6.5" x2="17.5" y2="6.5"></line>
-      </svg>
-      <span>Instagram</span>
-    </a>
+    const addressBtn = document.getElementById('address-btn');
+    const addressInfo = document.getElementById('address-info');
 
-    <!-- Address -->
-    <button id="address-btn" class="flex items-center gap-2 hover:text-purple-400 transition cursor-pointer" aria-label="Address">
-      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="28" height="28" class="text-purple-400">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M12 21C12 21 7 14 7 10a5 5 0 1110 0c0 4-5 11-5 11z" />
-        <circle cx="12" cy="10" r="2" stroke-linecap="round" stroke-linejoin="round" />
-      </svg>
-      <span>Address</span>
-    </button>
-  </div>
+    addressBtn.addEventListener('click', () => {
+      if (addressInfo.classList.contains('show')) {
+        // Hide address
+        addressInfo.classList.remove('show');
+        setTimeout(() => {
+          addressInfo.textContent = '';
+        }, 600);
+      } else {
+        // Show address with animation and font styling
+        addressInfo.textContent = 'Malappuram, Kerala, India.';
+        addressInfo.classList.add('show');
+      }
+    });
+  </script>
 
-  <div id="address-text" class="" aria-live="polite" role="region"></div>
-</section>
-</main> <script> // Mobile menu toggle const menuBtn = document.getElementById('menu-btn'); const mobileMenu = document.getElementById('mobile-menu'); menuBtn.addEventListener('click', () => { mobileMenu.classList.toggle('hidden'); }); // Address animation and toggle text const addressBtn = document.getElementById('address-btn'); const addressText = document.getElementById('address-text'); const addressInfo = "1234 PulseLogix Street, Tech City, TX 75001"; let addressVisible = false; addressBtn.addEventListener('click', () => { addressVisible = !addressVisible; if(addressVisible) { addressText.textContent = addressInfo; addressText.classList.add('show'); } else { addressText.classList.remove('show'); setTimeout(() => { addressText.textContent = ''; }, 500); } }); </script> </body> </html>
+</body>
+  </html>
+  
