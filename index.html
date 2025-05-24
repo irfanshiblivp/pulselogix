@@ -284,6 +284,25 @@
     footer a:hover {
       text-decoration: underline;
     }
+    
+    .plan-card.popular {
+  position: relative;
+  border: 2px solid #2563eb; /* Highlight border */
+}
+
+.popular-badge {
+  position: absolute;
+  top: -12px;
+  left: 20px;
+  background-color: #2563eb;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  z-index: 1;
+}
+
 
    * {
   margin: 0;
@@ -490,7 +509,7 @@ body {
     <h2>Choose Your Perfect Plan</h2>
     <div class="plans-cards">
       <div class="plan-card">
-        <div class="plan-header">Basic Plan – <s>₹12,999</s></div>
+        <div class="plan-header">Basic – <s>₹12,999</s></div>
         <div class="plan-price"><b>₹7,999 ($96)</b></div>
         <ul class="plan-features">
           <li>Up to 2 Pages</li>
@@ -504,24 +523,25 @@ body {
         </div>
       </div>
 
-      <div class="plan-card">
-        <div class="plan-header">Advanced Plan – <s>₹18,999</s></div>
-        <div class="plan-price"><b>₹13,999 ($168)</b></div>
-        <ul class="plan-features">
-          <li>Up to 4 Pages</li>
-          <li>Free web based mobile app</li>
-          <li>Custom design with animations</li>
-          <li>3 Months Support</li>
-          <li>Free Hosting setup</li>
-          <li>Responsive & fast</li>
-        </ul>
-        <div class="plan-cta">
-          <a href="https://wa.me/917012938541?text=Hi%20I'm%20interested%20in%20the%20Advanced%20Plan%20(₹13,999)">Get This Plan</a>
-        </div>
-      </div>
+<div class="plan-card popular">
+  <div class="popular-badge">Popular</div> <!-- Add this line -->
+  <div class="plan-header">Advanced – <s>₹18,999</s></div>
+  <div class="plan-price"><b>₹13,999 ($168)</b></div>
+  <ul class="plan-features">
+    <li>Up to 4 Pages</li>
+    <li>Free web based mobile app</li>
+    <li>Custom design</li>
+    <li>3 Months Support</li>
+    <li>Free Hosting setup</li>
+    <li>Responsive & fast</li>
+  </ul>
+  <div class="plan-cta">
+    <a href="https://wa.me/917012938541?text=Hi%20I'm%20interested%20in%20the%20Advanced%20Plan%20(₹13,999)">Get This Plan</a>
+  </div>
+</div>
 
       <div class="plan-card">
-        <div class="plan-header">Pro Plan – <s>₹29,999</s></div>
+        <div class="plan-header">Pro – <s>₹29,999</s></div>
         <div class="plan-price"><b>₹24,999 ($300)</b></div>
         <ul class="plan-features">
           <li>Up to 8 Pages</li>
