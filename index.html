@@ -276,6 +276,99 @@
       text-decoration: underline;
     }
 
+   * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: none;
+  overflow-x: hidden;
+  font-family: sans-serif;
+}
+
+.carousel-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 50px;
+  padding: 60px 8%;
+  align-items: center;
+  background: none;
+}
+
+.carousel-container::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-slide {
+  flex: 0 0 80%;
+  scroll-snap-align: center;
+  border-radius: 24px;
+  overflow: hidden;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transform: scale(0.95);
+  position: relative;
+}
+
+.carousel-slide:hover {
+  transform: scale(1);
+  box-shadow: 0 40px 70px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.carousel-slide img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.carousel-slide:hover img {
+  transform: scale(1.03);
+}
+
+/* Fullscreen popup effect */
+.carousel-slide:focus::after,
+.carousel-slide:target::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 998;
+}
+
+.carousel-slide:focus img,
+.carousel-slide:target img {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  max-width: 90vw;
+  max-height: 90vh;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%) scale(1.1);
+  border-radius: 20px;
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
+  z-index: 999;
+  transition: all 0.4s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .carousel-slide {
+    flex: 0 0 90%;
+  }
+
+  .carousel-slide img {
+    height: 300px;
+  }
+}
+
+
     @media (max-width: 768px) {
       .plans-cards {
         flex-direction: column;
@@ -304,7 +397,7 @@
   <section id="hero" class="hero">
     <img class="hero-logo" src="https://i.ibb.co/fYLvD7pL/Picsart-25-04-18-19-33-02-595.png" alt="PulseLogix Logo" width="200" height="200"/>
     <h1>Designing Digital Dreams. Delivered to Perfection.</h1>
-    <p>Get your custom website crafted with stunning design, seamless performance, and modern innovation—by your trusted freelance developer.</p>
+    <p>Get your custom website crafted with stunning design, seamless performance, and modern innovation—by your trusted freelance developer, all at a remarkably low price compared to others.</p>
     <div class="hero-buttons">
       <a href="#plans">Explore Plans</a>
       <a href="#buy-project">Buy Project</a>
@@ -323,6 +416,13 @@
       <div>Focus on performance and SEO</div>
     </div>
   </section>
+  
+  <section>
+  <h2>Why Our Pricing is So Affordable</h2>
+  <p style="max-width: 800px; margin: 0 auto; text-align: center; font-size: 1.1rem;">
+    We keep our prices low because we work smart. With the help of AI-assisted tools and a lean team of just one or two dedicated professionals, we deliver high-quality websites efficiently—without the overhead.
+  </p>
+</section>
 
   <section id="plans">
     <h2>Choose Your Perfect Plan</h2>
@@ -387,6 +487,15 @@
         <li>Error free</li>
         <li>Free web based mobile app</li>
       </ul>
+      <div class="carousel-container">
+    <div class="carousel-slide"><img src="https://i.ibb.co/WWZZGMqj/Picsart-25-05-23-18-05-17-666.png" alt="1" /></div>
+    <div class="carousel-slide"><img src="https://i.ibb.co/svYwnr5S/Picsart-25-05-23-18-03-29-030.png" alt="2" /></div>
+    <div class="carousel-slide"><img src="https://i.ibb.co/gFBc0YRP/Picsart-25-05-23-17-58-33-027.png" alt="3" /></div>
+    <div class="carousel-slide"><img src="https://i.ibb.co/HT7sH9VG/Picsart-25-05-23-17-59-53-475.png" alt="4" /></div>
+    <div class="carousel-slide"><img src="https://i.ibb.co/01jdrDV/Picsart-25-05-23-18-00-57-416.png" alt="5" /></div>
+    <div class="carousel-slide"><img src="https://i.ibb.co/BVXxZNd0/Picsart-25-05-23-18-01-46-830.png" alt="6" /></div>
+    <div class="carousel-slide"><img src="https://i.ibb.co/wrWc5hBy/Picsart-25-05-23-21-23-06-601.png" alt="7" /></div>
+  </div>
       <a href="https://wa.me/917012938541?text=Hi%20I%20want%20to%20buy%20the%20Attendance%20Management%20System%20(₹4,999)">Buy Now</a>
     </div>
   </section>
