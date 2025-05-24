@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     :root {
       --primary: #00008B;
@@ -237,25 +237,73 @@
       background: #ff3390;
     }
 
-    .contact-grid {
-      display: grid;
-      gap: 1.5rem;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    }
+ /* Contact Section */
+#contact {
+  padding: 5rem 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+  background: var(--gradient); /* Assuming you have --gradient defined in :root */
+}
 
-    .contact-item {
-      background: var(--card);
-      padding: 1.5rem;
-      border-radius: 16px;
-      text-align: center;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-    }
+#contact h2 {
+  font-size: 2.5rem;
+  color: var(--primary); /* Assuming you have --primary defined in :root */
+  margin-bottom: 2rem;
+}
 
-    .contact-item a {
-      text-decoration: none;
-      font-weight: bold;
-      color: var(--primary);
-    }
+#contact p {
+  font-size: 1.15rem;
+  color: #555;
+  margin-bottom: 2.5rem;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.contact-item {
+  background: var(--card); /* Assuming you have --card defined in :root */
+  padding: 2rem;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+.contact-item i {
+  font-size: 2rem; /* Size of the icons */
+  margin-bottom: 1rem;
+  color: var(--accent); /* Assuming you have --accent defined in :root */
+}
+
+.contact-item h3 {
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+  font-size: 1.3rem;
+}
+
+.contact-item p,
+.contact-item a {
+  color: var(--text); /* Assuming you have --text defined in :root */
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+  color: var(--accent);
+}
+
+/* Responsive adjustments for contact section */
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 
     footer {
       background: #f8f8ff;
@@ -501,27 +549,33 @@ body {
   </section>
 
   <section id="contact">
-    <h2>Let’s Build Your Website</h2>
-    <p>Choose any contact method below and get started instantly.</p>
-    <div class="contact-grid">
-      <div class="contact-item">
-        <h3>Email</h3>
-        <a href="mailto:pulselogixweb@gmail.com">pulselogixweb@gmail.com</a>
-      </div>
-      <div class="contact-item">
-        <h3>WhatsApp</h3>
-        <a href="https://wa.me/917012938541" target="_blank">+91 7012938541</a>
-      </div>
-      <div class="contact-item">
-        <h3>Instagram</h3>
-        <a href="https://instagram.com/pulse.logix" target="_blank">@pulse.logix</a>
-      </div>
-      <div class="contact-item">
-        <h3>Location</h3>
-        <p>Malappuram, Kerala, India</p>
-      </div>
+  <h2>Let’s Build Your Website</h2>
+  <p>Choose any contact method below and get started instantly.</p>
+  <div class="contact-grid">
+    <div class="contact-item">
+      <i class="fas fa-envelope fa-2x"></i>
+      <h3>Email</h3>
+      <a href="mailto:pulselogixweb@gmail.com">pulselogixweb@gmail.com</a>
     </div>
-  </section>
+    <div class="contact-item">
+      <i class="fab fa-whatsapp fa-2x"></i>
+      <h3>WhatsApp</h3>
+      <a href="https://wa.me/917012938541" target="_blank">+91 7012938541</a>
+    </div>
+    <div class="contact-item">
+      <i class="fab fa-instagram fa-2x"></i>
+      <h3>Instagram</h3>
+      <a href="https://instagram.com/pulse.logix" target="_blank">@pulse.logix</a>
+    </div>
+    <div class="contact-item">
+      <i class="fas fa-map-marker-alt fa-2x"></i>
+      <h3>Location</h3>
+      <p>Malappuram, Kerala, India</p>
+    </div>
+  </div>
+</section>
+
+  
 
   <footer>
     <div>
